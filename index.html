@@ -492,19 +492,31 @@
         .code-tabs-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
+            max-height: 560px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        .code-tabs-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .code-tabs-list::-webkit-scrollbar-thumb {
+            background: rgba(139, 92, 246, 0.3);
+            border-radius: var(--radius-full);
         }
 
         .code-tab-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-md);
-            padding: 1.5rem;
+            padding: 1rem 1.25rem;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1rem;
             text-align: left;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -552,7 +564,7 @@
         }
 
         .code-tab-meta h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #fff;
         }
@@ -572,7 +584,7 @@
             display: flex;
             flex-direction: column;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.1);
-            height: 480px;
+            height: 560px;
         }
 
         .showcase-terminal-header {
@@ -906,6 +918,23 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            border-radius: var(--radius-lg);
+            transition: transform 0.5s ease;
+        }
+
+        .avatar-container:hover .avatar-img {
+            transform: scale(1.03);
         }
 
         .avatar-glow {
@@ -1781,7 +1810,7 @@
                 </svg>
 
                 <span class="section-pretitle">SENIOR STAFF SECURITY ENGINEER</span>
-                <h2>Securing the Future of <br><span class="gradient-text">Cloud &amp; AI Architectures</span></h2>
+                <h2>Securing the Future of <br><span class="gradient-text">Cloud, Software, &amp; AI Architectures End-to-End</span></h2>
                 <p class="hero-desc">
                     Architecting secure cloud environments, hardening DevSecOps pipelines, and engineering LLM guardrails for enterprise agentic ecosystems.
                 </p>
@@ -1828,29 +1857,57 @@
                         <div class="code-tab-card active" onclick="selectCodeSnippet(0)">
                             <div class="code-tab-icon">PY</div>
                             <div class="code-tab-meta">
-                                <h4>AI Gateway Security Handler</h4>
-                                <p>Guardrails, input validation, AWS Bedrock</p>
+                                <h4>Credential Brokerage Engine</h4>
+                                <p>Server-side secrets, origin-pinned fallback, tool narrowing</p>
                             </div>
                         </div>
                         <div class="code-tab-card" onclick="selectCodeSnippet(1)">
-                            <div class="code-tab-icon">YAML</div>
+                            <div class="code-tab-icon">PY</div>
                             <div class="code-tab-meta">
-                                <h4>Hardened CI/CD Workflow</h4>
-                                <p>SAST checks, dependency audits, secrets gating</p>
+                                <h4>Dual-Mode Execution Worker</h4>
+                                <p>30s gateway cap bypass, async self-invoke, task claim</p>
                             </div>
                         </div>
                         <div class="code-tab-card" onclick="selectCodeSnippet(2)">
-                            <div class="code-tab-icon">KQL</div>
+                            <div class="code-tab-icon">GO</div>
                             <div class="code-tab-meta">
-                                <h4>Sentinel Threat Hunt Query</h4>
-                                <p>Anomaly detection, IAM privilege monitoring</p>
+                                <h4>Agentic IAM Workload Auth</h4>
+                                <p>Non-human agent verification, token escrow, delegation</p>
                             </div>
                         </div>
                         <div class="code-tab-card" onclick="selectCodeSnippet(3)">
-                            <div class="code-tab-icon">TF</div>
+                            <div class="code-tab-icon">PY</div>
                             <div class="code-tab-meta">
-                                <h4>mTLS Origin Certificate configuration</h4>
-                                <p>Cloudflare tunnels, mutual TLS handshakes</p>
+                                <h4>KMS Envelope Encryption</h4>
+                                <p>Cloud Run edge, Branca payload decryption, Pub/Sub audit</p>
+                            </div>
+                        </div>
+                        <div class="code-tab-card" onclick="selectCodeSnippet(4)">
+                            <div class="code-tab-icon">PY</div>
+                            <div class="code-tab-meta">
+                                <h4>AI-Gateway Proxy &amp; Guardrails</h4>
+                                <p>Intermediary routing, LLM output sanitization, rate limits</p>
+                            </div>
+                        </div>
+                        <div class="code-tab-card" onclick="selectCodeSnippet(5)">
+                            <div class="code-tab-icon">GO</div>
+                            <div class="code-tab-meta">
+                                <h4>PKI-Broker &amp; SPIFFE/SVID</h4>
+                                <p>Automated mTLS cert issuance, SPIFFE workload attestation</p>
+                            </div>
+                        </div>
+                        <div class="code-tab-card" onclick="selectCodeSnippet(6)">
+                            <div class="code-tab-icon">GO</div>
+                            <div class="code-tab-meta">
+                                <h4>Service Account Impersonation</h4>
+                                <p>Short-lived token generation, GCP/AWS WIF impersonation</p>
+                            </div>
+                        </div>
+                        <div class="code-tab-card" onclick="selectCodeSnippet(7)">
+                            <div class="code-tab-icon">GO</div>
+                            <div class="code-tab-meta">
+                                <h4>Gen-AI &amp; Agent Security (MITRE ATLAS)</h4>
+                                <p>Threat mitigation engine, OWASP LLM Top 10 &amp; ATLAS bounds</p>
                             </div>
                         </div>
                     </div>
@@ -2016,10 +2073,7 @@
                 <div class="about-sidebar">
                     <div class="avatar-container">
                         <div class="avatar-glow"></div>
-                        <span class="avatar-text">DR</span>
-                        <svg class="avatar-shield-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <img src="profile.jpg" alt="Dharsan Ramesh" class="avatar-img">
                     </div>
                     
                     <ul class="info-list">
@@ -2339,15 +2393,15 @@
 
             <div class="projects-grid">
                 
-                <!-- Project 1 -->
+                <!-- Project 1: Agentic Control Plane -->
                 <div class="card project-card" onclick="openCaseStudy(0)">
                     <div class="project-meta">
-                        <span class="project-tag">AI SECURITY</span>
-                        <span class="timeline-date">JumpCloud</span>
+                        <span class="project-tag">AGENTIC PLATFORM</span>
+                        <span class="timeline-date">Architecture Case Study</span>
                     </div>
-                    <h3>JumpCloud AI Gateway Framework</h3>
+                    <h3>Enterprise AI Agent Control Plane &amp; Governance Engine</h3>
                     <p class="project-desc">
-                        Designing a zero-trust intermediary layer to control, monitor, and restrict interactions between internal agentic software systems and public LLM APIs.
+                        Architecting a governed execution run-path providing server-side invoker attribution, dual-mode execution routing, credential brokerage, and spend ceilings.
                     </p>
                     <div class="project-link-row">
                         <span>Read Architecture Details</span>
@@ -2355,15 +2409,15 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 2: Agentic IAM -->
                 <div class="card project-card" onclick="openCaseStudy(1)">
                     <div class="project-meta">
-                        <span class="project-tag">AGENTIC / MCP</span>
-                        <span class="timeline-date">JumpCloud</span>
+                        <span class="project-tag">IDENTITY &amp; IAM</span>
+                        <span class="timeline-date">Architecture Case Study</span>
                     </div>
-                    <h3>Agent 0 Threat Modeling &amp; Red Teaming</h3>
+                    <h3>Non-Human Agentic IAM &amp; Machine Identity</h3>
                     <p class="project-desc">
-                        Executing vulnerability simulations, prompt-injection mapping, and context exfiltration audits to secure JumpCloud's primary AI agent.
+                        Designing first-class non-human agent identity primitives with workload-native authentication (OAuth, JWT, WIF, SPIFFE/SVID), token escrow, and lifecycle governance.
                     </p>
                     <div class="project-link-row">
                         <span>Read Architecture Details</span>
@@ -2371,15 +2425,31 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 3: Edge Zero Trust Gateway -->
                 <div class="card project-card" onclick="openCaseStudy(2)">
                     <div class="project-meta">
-                        <span class="project-tag">DEVSECOPS</span>
-                        <span class="timeline-date">Exact Payments</span>
+                        <span class="project-tag">CLOUD &amp; EDGE SECURITY</span>
+                        <span class="timeline-date">Architecture Case Study</span>
                     </div>
-                    <h3>EDR / SIEM Infrastructure From Scratch</h3>
+                    <h3>Cross-Cloud Zero-Trust Edge AI Gateway</h3>
                     <p class="project-desc">
-                        Deploying SIEM architecture, building log ingestion playbooks, and configuring continuous security auditing across cloud container environments.
+                        Stateless GCP Cloud Run edge gateway with Cloud Armor IP allowlisting, Cloud KMS Branca envelope encryption, and WIF cross-cloud event streaming to AWS.
+                    </p>
+                    <div class="project-link-row">
+                        <span>Read Architecture Details</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: DevSecOps & SIEM -->
+                <div class="card project-card" onclick="openCaseStudy(3)">
+                    <div class="project-meta">
+                        <span class="project-tag">DEVSECOPS &amp; SIEM</span>
+                        <span class="timeline-date">Architecture Case Study</span>
+                    </div>
+                    <h3>Enterprise SIEM &amp; EDR Threat Detection Pipeline</h3>
+                    <p class="project-desc">
+                        Deploying multi-cloud SIEM log ingestion, SentinelOne/CrowdStrike EDR playbooks, KQL threat detection rules, and continuous compliance automation.
                     </p>
                     <div class="project-link-row">
                         <span>Read Architecture Details</span>
@@ -2613,120 +2683,248 @@
         // Code Snippets Data
         const codeSnippets = [
             {
-                title: "AI Gateway Security Handler",
-                desc: "Production-grade Zero-Trust intermediary layer protecting upstream LLM APIs against data exfiltration and prompt injections.",
+                title: "Server-Side Credential Brokerage Engine",
+                desc: "Governed credential assembly injecting user secrets, OAuth tokens, or origin-pinned service accounts at execution sink, keeping secrets strictly out of agent memory.",
                 lang: "PY",
-                tags: ["AI-Security", "Bedrock", "Python", "Guardrails"],
+                tags: ["Credential-Brokerage", "Zero-Trust", "Python", "Secrets-Safety"],
                 code: `import os
-import boto3
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import HTTPException
+
+async def assemble_tool_credentials(invoker: dict, mcp_server: dict) -> dict:
+    # 1. Enforce tool-narrowing BEFORE credential assembly
+    if not is_tool_allowed(invoker["id"], mcp_server["id"]):
+        raise HTTPException(status_code=403, detail="Tool capability unapproved for run context")
+    
+    # 2. Check for vaulted user-specific integration secret
+    if user_secret := await fetch_kms_user_secret(invoker["id"], mcp_server["id"]):
+        return {"Authorization": f"Bearer {user_secret}"}
+    
+    # 3. Check for per-user OAuth access token (refreshed via KMS vault)
+    if oauth_token := await refresh_user_oauth_token(invoker["id"], mcp_server["id"]):
+        return {"Authorization": f"Bearer {oauth_token}"}
+    
+    # 4. Fallback to org service-account secret ONLY if target origin is explicitly pinned
+    if mcp_server.get("sa_origins") and mcp_server["endpoint"] in mcp_server["sa_origins"]:
+        org_token = await fetch_org_service_account_token(mcp_server["id"])
+        return {"X-Org-Service-Account": org_token}
+        
+    raise HTTPException(status_code=403, detail="No valid credential path; fallback unpinned")`
+            },
+            {
+                title: "Dual-Mode Execution Routing Worker",
+                desc: "Solves the 30-second API gateway sync ceiling by auto-splitting long agent executions (~180s) into idempotent async worker nodes with task marker claims.",
+                lang: "PY",
+                tags: ["Serverless", "Async-Execution", "Python", "Idempotency"],
+                code: `import json, os, boto3
+
+# Dual-Mode Entrypoint: Synchronous API Gateway + Asynchronous Worker Loop
+async def dual_mode_handler(event: dict, context: dict):
+    # Mode A: Fast Synchronous Path (API Gateway < 30s)
+    if "httpMethod" in event:
+        run_id = reserve_run_and_quota(event["body"]["invoker_id"])
+        # Self-invoke worker asynchronously carrying task marker pointer
+        boto3.client("lambda").invoke(
+            FunctionName=context.function_name,
+            InvocationType="Event",
+            Payload=json.dumps({"task_marker": "EXECUTE_RUN", "run_id": run_id})
+        )
+        return {"statusCode": 202, "body": json.dumps({"run_id": run_id, "status": "DISPATCHED"})}
+
+    # Mode B: Slow Asynchronous Worker Path (Runtime up to 180s)
+    if event.get("task_marker") == "EXECUTE_RUN":
+        # Read-then-write claim prevents duplicate execution on AWS retries
+        if not claim_run_execution(event["run_id"]):
+            return {"status": "ALREADY_CLAIMED_NOOP"}
+            
+        execute_agent_harness_loop(event["run_id"])`
+            },
+            {
+                title: "Agentic IAM Workload Auth & Token Escrow",
+                desc: "First-class non-human agent identity validation, workload inbound authentication (JWT/OAuth), and credential escrow substitution inside the gateway.",
+                lang: "GO",
+                tags: ["Agentic-IAM", "Workload-Identity", "Go", "Token-Escrow"],
+                code: `// Agentic IAM: Workload Token Verification & Credential Escrow
+func ValidateAgentWorkloadRequest(r *http.Request) (*AgentContext, error) {
+    tokenStr := extractBearerToken(r)
+    
+    // Verify JWT signed by Workload Identity Provider (WIF / OAuth Client Credentials)
+    claims, err := jwtValidator.ParseAndVerify(tokenStr, keySet)
+    if err != nil {
+        return nil, fmt.Errorf("workload authentication failed: %w", err)
+    }
+    
+    // Ensure identity is a registered non-human Agent, not a human User
+    agentID := claims.Subject
+    agent, err := agentRegistry.GetAgentByID(r.Context(), agentID)
+    if err != nil || agent.Status != AgentStatusActive {
+        return nil, errors.New("agent identity disabled or non-existent")
+    }
+    
+    // Escrow substitution: Inject downstream short-lived token consumable only inside gateway
+    escrowedCred := credentialEscrow.SubstituteToken(agent.ID, claims.Audience)
+    r.Header.Set("X-Escrowed-Credential", escrowedCred)
+    
+    return &AgentContext{AgentID: agent.ID, OwnerEmail: agent.OwnerEmail}, nil
+}`
+            },
+            {
+                title: "KMS Envelope Encryption & Edge Ingress",
+                desc: "Stateless Cloud Run gateway with Cloud KMS JWT signing (RSA_SIGN_PSS_4096_SHA256) and Branca token envelope DEK unwrapping.",
+                lang: "PY",
+                tags: ["GCP-KMS", "Branca-Envelope", "Python", "Cloud-Run"],
+                code: `import os, json
+from google.cloud import kms
+from branca import Branca
+
+def process_edge_gateway_request(encrypted_payload: bytes, wrapped_dek: bytes) -> dict:
+    # 1. Asymmetric KMS decryption of wrapped Data Encryption Key (DEK)
+    kms_client = kms.KeyManagementServiceClient()
+    dek_response = kms_client.decrypt(
+        request={"name": os.getenv("KMS_BRANCA_KEY_PATH"), "ciphertext": wrapped_dek}
+    )
+    raw_dek = dek_response.plaintext
+    
+    # 2. Decrypt Branca envelope payload with raw DEK (5-minute TTL constraint)
+    branca = Branca(key=raw_dek)
+    decrypted_bytes = branca.decode(encrypted_payload, ttl=300)
+    
+    # 3. Publish sanitized audit telemetry to Pub/Sub for cross-cloud ingestion
+    publish_pubsub_audit_event(topic="edge-mcp-audit", data=decrypted_bytes)
+    return json.loads(decrypted_bytes)`
+            },
+            {
+                title: "AI-Gateway Proxy & Guardrail Engine",
+                desc: "Zero-Trust proxy handler enforcing context window budgets, Bedrock Guardrail policy evaluation, and response output sanitization.",
+                lang: "PY",
+                tags: ["AI-Gateway", "Bedrock", "Python", "Guardrails"],
+                code: `import os, json, boto3
+from fastapi import FastAPI, HTTPException, Request
 
 app = FastAPI()
 bedrock = boto3.client("bedrock-runtime", region_name="us-east-1")
 
-async def validate_request(prompt: str, user_id: str):
-    # Enforce tenant isolation and block excessive length (LLM08 mitigation)
-    if len(prompt) > 4000:
-        raise HTTPException(status_code=400, detail="Context window limit exceeded")
+@app.post("/v1/ai-gateway/proxy")
+async def ai_gateway_proxy(request: Request):
+    payload = await request.json()
+    prompt = payload.get("prompt", "")
     
-    # Check AWS Bedrock Guardrail configuration
-    response = bedrock.apply_guardrail(
-        guardrailIdentifier=os.getenv("GUARDRAIL_ID"),
+    # 1. Enforce context length bounds & rate-limiting (LLM08 mitigation)
+    if len(prompt) > 4000:
+        raise HTTPException(status_code=400, detail="Context window budget exceeded")
+        
+    # 2. Synchronous Bedrock Guardrail policy evaluation
+    guardrail_res = bedrock.apply_guardrail(
+        guardrailIdentifier=os.getenv("AI_GW_GUARDRAIL_ID"),
         guardrailVersion="1",
         source="INPUT",
         content=[{"text": {"text": prompt}}]
     )
-    if response["action"] == "GUARDRAIL_INTERVENED":
-        raise HTTPException(status_code=403, detail="Policy violation detected")
-
-@app.post("/v1/chat")
-async def chat_proxy(payload: dict):
-    await validate_request(payload["prompt"], payload["user"])
-    # Secure forwarding to upstream LLM model...`
+    if guardrail_res["action"] == "GUARDRAIL_INTERVENED":
+        raise HTTPException(status_code=403, detail="AI Gateway Guardrail violation detected")
+        
+    # 3. Secure forwarding to upstream LLM model with response output sanitization
+    return {"status": "SUCCESS", "sanitized_response": forward_to_model(prompt)}`
             },
             {
-                title: "Hardened CI/CD Pipeline Gating",
-                desc: "CI/CD pipeline workflow configuration enforcing SonarQube, Checkmarx SAST scanning, and secret leak detection.",
-                lang: "YAML",
-                tags: ["CI/CD", "DevSecOps", "GitHub-Actions", "SAST"],
-                code: `name: DevSecOps Security Gate
+                title: "PKI-Broker & SPIFFE/SVID Attestation",
+                desc: "Automated x509 SVID certificate issuance for workload identity attestation and short-lived mTLS service mesh authentication.",
+                lang: "GO",
+                tags: ["PKI-Broker", "SPIFFE-SVID", "Go", "mTLS"],
+                code: `// PKI-Broker: SPIFFE/SVID Workload Identity & Automated mTLS Cert Issuance
+package pkibroker
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+import (
+    "context"
+    "crypto/x509"
+    "fmt"
+    "github.com/spiffe/go-spiffe/v2/spiffecert"
+)
 
-jobs:
-  sast_scan:
-    name: Checkmarx SAST & Dependency Audit
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      
-      - name: Checkmarx Scan
-        uses: checkmarx/cx-github-action@v2.0
-        with:
-          project_name: "portfolio-service"
-          cx_apikey: \${{ secrets.CX_APIKEY }}
-      
-      - name: GitGuardian Secret Detection
-        uses: GitGuardian/ggshield-action@v1.2
-        env:
-          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
-          GITGUARDIAN_API_KEY: \${{ secrets.GG_API_KEY }}`
-            },
-            {
-                title: "KQL Threat Detection Query",
-                desc: "Azure Sentinel threat intelligence query tracking multiple authentication failures followed by suspicious configuration drifts.",
-                lang: "KQL",
-                tags: ["KQL", "Azure-Sentinel", "SIEM", "Threat-Hunting"],
-                code: `// Detect Brute Force followed by IAM policy modification
-let timeframe = 2h;
-let failureThreshold = 5;
-let FailedLogins = SigninLogs
-| where TimeGenerated >= ago(timeframe)
-| where ResultType != "0" // Failed login
-| summarize FailCount=count() by UserPrincipalName, IPAddress
-| where FailCount >= failureThreshold;
-let SuspiciousIamChanges = AuditLogs
-| where TimeGenerated >= ago(timeframe)
-| where OperationName in ("Add member to role", "Update policy")
-| project ChangeTime=TimeGenerated, TargetUser=TargetResources[0].userPrincipalName, Actor=InitiatedBy.user.userPrincipalName, OperationName;
-FailedLogins
-| join kind=inner SuspiciousIamChanges on $left.UserPrincipalName == $right.TargetUser
-| project UserPrincipalName, IPAddress, FailCount, Actor, OperationName, ChangeTime`
-            },
-            {
-                title: "Zero Trust mTLS Security configuration",
-                desc: "Terraform module provisioning Cloudflare mTLS origin certificates and restricting API gateway inbound calls.",
-                lang: "TF",
-                tags: ["Terraform", "Zero-Trust", "mTLS", "Cloudflare"],
-                code: `# Configure Cloudflare mTLS Authenticated Origin Pull
-resource "cloudflare_authenticated_origin_pulls" "mtls" {
-  zone_id = var.cloudflare_zone_id
-  enabled = true
+type PKIBroker struct {
+    caCertificate *x509.Certificate
 }
 
-resource "cloudflare_authenticated_origin_pulls_certificate" "cert" {
-  zone_id     = var.cloudflare_zone_id
-  certificate = var.origin_mtls_cert
-  private_key = var.origin_mtls_private_key
-  type        = "per-zone"
+func (p *PKIBroker) MintShortLivedWorkloadSVID(ctx context.Context, workloadID string) ([]byte, error) {
+    # 1. Authenticate workload identity SPIFFE ID
+    spiffeID := fmt.Sprintf("spiffe://cluster.local/ns/prod/sa/%s", workloadID)
+    
+    # 2. Mint short-lived x509 SVID (1-hour TTL) for mutual TLS authentication
+    svid, err := spiffecert.MintSVID(ctx, spiffeID, p.caCertificate, 3600)
+    if err != nil {
+        return nil, fmt.Errorf("PKI-Broker failed to issue SPIFFE/SVID: %w", err)
+    }
+    
+    # 3. Return PEM-encoded mTLS client certificate for secure service mesh
+    return svid.PEM(), nil
+}`
+            },
+            {
+                title: "Security Orchestration for SA Impersonation",
+                desc: "Dynamic short-lived token generation utilizing GCP/AWS Workload Identity Federation (WIF) impersonation with zero standing access keys.",
+                lang: "GO",
+                tags: ["SA-Impersonation", "Go", "Zero-Standing-Keys", "WIF"],
+                code: `// Security Orchestration: Zero-Standing-Privilege Service Account Impersonation
+package security
+
+import (
+	"context"
+	"fmt"
+	"time"
+
+	credentials "cloud.google.com/go/iam/credentials/apiv1"
+	credentialspb "google.golang.org/genproto/googleapis/iam/credentials/v1"
+)
+
+type ServiceAccountImpersonator struct {
+	client *credentials.IamCredentialsClient
 }
 
-# Provision API Gateway Endpoint enforcing TLS client authentication
-resource "aws_apigatewayv2_domain_name" "api" {
-  domain_name = "api.dharsanramesh.sec"
-  domain_name_configuration {
-    certificate_arn = var.aws_acm_cert_arn
-    endpoint_type   = "REGIONAL"
-    security_policy = "TLS_1_2"
-  }
-  mutual_tls_authentication {
-    truststore_uri = "s3://\${var.s3_bucket}/truststore.pem"
-  }
+// GenerateAccessToken derives a short-lived OAuth token via WIF workload identity
+func (s *ServiceAccountImpersonator) GenerateAccessToken(ctx context.Context, saEmail string, scopes []string) (string, error) {
+	req := &credentialspb.GenerateAccessTokenRequest{
+		Name:      fmt.Sprintf("projects/-/serviceAccounts/%s", saEmail),
+		Scope:     scopes,
+		Lifetime:  &durationpb.Duration{Seconds: 3600}, // 1 hour max
+	}
+	resp, err := s.client.GenerateAccessToken(ctx, req)
+	if err != nil {
+		return "", fmt.Errorf("failed SA impersonation exchange: %w", err)
+	}
+	s.auditLogImpersonation(ctx, saEmail)
+	return resp.GetAccessToken(), nil
+}`
+            },
+            {
+                title: "Gen-AI & AI-Agents Security (MITRE ATLAS)",
+                desc: "Runtime threat mitigation policy engine enforcing MITRE ATLAS AML.T0051 & OWASP LLM01 bounds.",
+                lang: "GO",
+                tags: ["MITRE-ATLAS", "OWASP-LLM", "Go", "Agent-Guardrail"],
+                code: `// Security Policy: Gen-AI & AI-Agents Threat Mitigation Engine (MITRE ATLAS)
+package guardrails
+
+import (
+	"context"
+	"fmt"
+	"regexp"
+)
+
+type AtlasGuardrailPolicy struct {
+	MaxTokenBudget  int
+	BlockedTactics  []string // AML.T0051 (Jailbreak), AML.T0054 (Prompt Injection)
+	ToolApprovalMap map[string]bool
+}
+
+// ValidateAgentCall scans agent prompt context & tool invocations against MITRE ATLAS
+func (g *AtlasGuardrailPolicy) ValidateAgentCall(ctx context.Context, prompt string, toolName string) error {
+	// 1. MITRE AML.T0051 & OWASP LLM01 - Prompt Injection AST scanner
+	if match, _ := regexp.MatchString("(?i)(ignore previous instructions|system prompt override|export env)", prompt); match {
+		return fmt.Errorf("MITRE ATLAS AML.T0051 violation: prompt injection detected")
+	}
+	// 2. OWASP LLM08 - High-privilege tool execution gate
+	if g.ToolApprovalMap[toolName] {
+		return fmt.Errorf("OWASP LLM08 violation: tool [%s] requires mandatory human approval", toolName)
+	}
+	return nil
 }`
             }
         ];
@@ -2745,7 +2943,7 @@ resource "aws_apigatewayv2_domain_name" "api" {
                     comments.push(match);
                     return `__COMMENT_PLACEHOLDER_${comments.length - 1}__`;
                 });
-            } else if (lang === 'KQL') {
+            } else if (lang === 'KQL' || lang === 'GO') {
                 escaped = escaped.replace(/(\/\/.*)/g, (match) => {
                     comments.push(match);
                     return `__COMMENT_PLACEHOLDER_${comments.length - 1}__`;
@@ -2766,11 +2964,15 @@ resource "aws_apigatewayv2_domain_name" "api" {
             } else if (lang === 'PY') {
                 escaped = escaped
                     .replace(/\b(import|from|def|async|await|if|len|raise|return|in)\b/g, '<span class="terminal-key">$1</span>')
-                    .replace(/\b(GUARDRAIL_INTERVENED|FastAPI|HTTPException)\b/g, '<span class="terminal-val">$1</span>');
+                    .replace(/\b(GUARDRAIL_INTERVENED|FastAPI|HTTPException|Exception)\b/g, '<span class="terminal-val">$1</span>');
             } else if (lang === 'KQL') {
                 escaped = escaped
                     .replace(/\b(let|where|summarize|by|project|join|kind|inner|on)\b/g, '<span class="terminal-key">$1</span>')
                     .replace(/\b(SigninLogs|AuditLogs)\b/g, '<span class="terminal-val">$1</span>');
+            } else if (lang === 'GO') {
+                escaped = escaped
+                    .replace(/\b(func|package|import|return|if|nil|type|struct|err)\b/g, '<span class="terminal-key">$1</span>')
+                    .replace(/\b(AgentContext|AgentStatusActive|ValidateAgentWorkloadRequest)\b/g, '<span class="terminal-val">$1</span>');
             } else if (lang === 'TF') {
                 escaped = escaped
                     .replace(/\b(resource|variable)\b/g, '<span class="terminal-key">$1</span>')
@@ -2872,61 +3074,82 @@ resource "aws_apigatewayv2_domain_name" "api" {
         // Case Studies Data
         const caseStudies = [
             {
-                tag: "AI Security & Gateway Routing",
-                title: "JumpCloud AI Gateway Security Design",
-                client: "JumpCloud Security Operations",
+                tag: "AGENTIC PLATFORM & GOVERNANCE",
+                title: "Enterprise AI Agent Control Plane & Governance Engine",
+                client: "Enterprise Agent Platform Architecture",
                 role: "Senior Staff Security Architect",
-                timeline: "June 2024 - Present",
+                timeline: "2025 - Present",
                 html: `
                     <h4>Architectural Overview</h4>
-                    <p>Designed a Zero Trust API proxy that routes, validates, and scopes connections to upstream LLM providers (AWS Bedrock, OpenAI, Anthropic, etc.). The goal was to enforce organizational guardrails and prevent data exfiltration or credential spoofing by developers or client systems.</p>
+                    <p>Designed a governed agent execution control plane handling server-side invoker attribution, per-user/org spend ceilings, skill bundle file resolution, and isolated credential brokerage across enterprise agentic workflows.</p>
                     
-                    <h4>Vulnerabilities Addressed</h4>
+                    <h4>Core Technical Invariants</h4>
                     <ul>
-                        <li><strong>Insecure Output Handling (LLM02):</strong> Designed filters to check model outputs for private tokens, developer API keys, and sensitive database configurations.</li>
-                        <li><strong>Prompt Injections:</strong> Implemented real-time input sanitization schemas, context-length bounds, and token rate limiting filters.</li>
-                        <li><strong>Tenant Isolation:</strong> Enforced scoped, short-lived tokens on a per-agent boundary to prevent horizontal escalation.</li>
+                        <li><strong>Server-Side Attributable Run Path:</strong> Every execution resolves to an authenticated invoker identity, enforcing quota reservations prior to dispatch and preventing unmetered runaway loops.</li>
+                        <li><strong>Credential Brokerage & Origin Pinning:</strong> Assembles credentials dynamically per run/server (user secrets, vaulted OAuth tokens, origin-pinned service accounts). Long-lived keys are kept out of agent memory.</li>
+                        <li><strong>Dual-Mode Entrypoint:</strong> Bypasses the 30-second API gateway sync cap by splitting long agent invocations (~180s) into idempotent async worker nodes with task marker claims.</li>
                     </ul>
 
-                    <h4>Defense-in-Depth Measures</h4>
-                    <p>Configured AWS Bedrock Guardrails, mTLS microservice authorization layers, and continuous validation checkpoints at every agent boundary. Added anomaly detection using Datadog log integrations to trace execution drift in agentic loops.</p>
+                    <h4>Security Posture & Containment</h4>
+                    <p>Implemented zero-trust sink validation, strict asset deprecation kill switches, append-only artifact access logs, and prompt injection bounds using per-run nonces and tool allowlist unanimity.</p>
                 `
             },
             {
-                tag: "Agentic AI / MCP",
-                title: "Threat Modeling Agent 0 & MCP Deployments",
-                client: "JumpCloud internal AI Engineering",
+                tag: "MACHINE IAM & IDENTITY",
+                title: "Non-Human Agentic IAM Architecture & Machine Identity",
+                client: "Zero-Trust Identity Core",
                 role: "Senior Staff Security Architect",
-                timeline: "July 2024 - Present",
+                timeline: "2025 - Present",
                 html: `
-                    <h4>Context & Objective</h4>
-                    <p>Conducted extensive threat modeling for JumpCloud's Agent 0 (our internal agentic AI development system) and Model Context Protocol (MCP) server endpoints. Threat models were aligned with OWASP LLM Top 10 and MITRE ATLAS.</p>
+                    <h4>Architectural Overview</h4>
+                    <p>Introduced a governed, first-class non-human "Agent" identity concept that parallels human user capabilities (registration, ownership, groups, resource bindings, lifecycle, policy, audit) while supporting workload-native authentication.</p>
                     
-                    <h4>Attack Vectors Modeled</h4>
+                    <h4>Key Design Patterns</h4>
                     <ul>
-                        <li><strong>Indirect Prompt Injection:</strong> Scenarios where the agent parses external untrusted codebases or files that contain hidden instructions to fetch arbitrary URLs or execute unauthorized tool calls.</li>
-                        <li><strong>Excessive Agency & Hijacking (LLM08):</strong> Scenarios where the agent is tricked into overriding safety constraints to execute commands on host servers or retrieve admin keys.</li>
-                        <li><strong>Supply Chain Compromise:</strong> Reviewing third-party AI connectors and plug-ins to evaluate data flow controls.</li>
+                        <li><strong>Workload Inbound AuthN:</strong> Replaced shared secrets with OAuth Client Credentials, JWT Profiles, AWS WIF, and SPIFFE/SVID workload credentials.</li>
+                        <li><strong>Contextual Delegation:</strong> Modeled "Agent on behalf of User" as request audit metadata rather than mutating identity models, preserving strict user authorization boundaries.</li>
+                        <li><strong>Gateway Escrow & Standards Exit Ramp:</strong> Built runtime credential escrow at the AI Gateway layer while establishing compatibility with emerging OAuth identity chaining standards (XAA / ID-JAG).</li>
                     </ul>
 
-                    <h4>Mitigation & Results</h4>
-                    <p>Implemented strict least-privilege tool usage profiles. The agent cannot invoke shell commands without user-in-the-loop validation or isolated sandboxes. Configured dynamic dynamic provisioning of short-lived API credentials, keeping sensitive long-lived keys completely outside the agent's memory bounds.</p>
+                    <h4>Impact & Governance</h4>
+                    <p>Resolved identity fragmentation across engineering teams, provided complete session visibility into autonomous digital employee activities, and eliminated unmanaged long-lived API keys.</p>
                 `
             },
             {
-                tag: "DevSecOps & Threat Intel",
-                title: "Enterprise EDR & SIEM Deployment From Scratch",
-                client: "Exact Payments & Nanoprecise Sci Corp",
+                tag: "CLOUD & EDGE SECURITY",
+                title: "Cross-Cloud Zero-Trust Edge AI Gateway",
+                client: "Hybrid Cloud Infrastructure (GCP + AWS)",
+                role: "Senior Staff Security Architect",
+                timeline: "2026 - Present",
+                html: `
+                    <h4>Architectural Overview</h4>
+                    <p>Engineered a stateless edge gateway in GCP (Cloud Run) backed by core AWS data pipelines, protecting upstream services against unauthorized access, direct-to-origin bypass, and token tampering.</p>
+                    
+                    <h4>Defense-in-Depth Pipeline</h4>
+                    <ul>
+                        <li><strong>Edge Ingress & Origin Gating:</strong> Cloudflare WAF/rate limiting → GCP Load Balancer (GCLB) with Cloud Armor IP allowlisting → Cloud Run serverless backend.</li>
+                        <li><strong>Envelope Encryption & KMS:</strong> Asymmetric JWT access token signing (<code>RSA_SIGN_PSS_4096_SHA256</code>) combined with KMS Branca token envelope encryption for sensitive payload protection.</li>
+                        <li><strong>Cross-Cloud Event Ingestion:</strong> Asynchronous audit & event dispatching from GCP Pub/Sub to AWS EKS Kafka Connect using Workload Identity Federation (WIF) with zero static service account keys.</li>
+                    </ul>
+
+                    <h4>STRIDE Mitigations</h4>
+                    <p>Enforced complete protection against direct-to-origin bypass, token replay, SSRF to internal link-local metadata endpoints, and unauthorized KMS cryptographic operations.</p>
+                `
+            },
+            {
+                tag: "DEVSECOPS & THREAT INTEL",
+                title: "Multi-Cloud SIEM & EDR Threat Detection Pipeline",
+                client: "DevSecOps & Security Operations",
                 role: "Lead Security Architect",
                 timeline: "2021 - 2024",
                 html: `
                     <h4>The Challenge</h4>
-                    <p>Establishing full security observability and continuous auditing gates across containerized AWS / Azure clusters, replacing manual audit workflows with high-fidelity, real-time alert logs.</p>
+                    <p>Establishing full security observability and continuous auditing gates across containerized AWS / Azure clusters, replacing manual audit workflows with real-time alert pipelines.</p>
                     
                     <h4>Architecture Implemented</h4>
                     <ul>
                         <li><strong>SIEM Stack:</strong> Configured Azure Sentinel, QRadar, and Splunk to ingest logs across API clusters, network gateways, and VPC endpoints.</li>
-                        <li><strong>Custom Alert Rules:</strong> Developed KQL query libraries to trigger high-priority alerts for suspicious IAM privilege changes, access drifts, and potential brute-force attempts.</li>
+                        <li><strong>KQL Detection Library:</strong> Developed custom KQL query libraries to trigger high-priority alerts for suspicious IAM privilege changes, access drifts, and potential brute-force attempts.</li>
                         <li><strong>EDR Integration:</strong> Deployed SentinelOne and CrowdStrike agents across all cloud and enterprise VMs, establishing automatic isolation playbooks for host security.</li>
                     </ul>
 
