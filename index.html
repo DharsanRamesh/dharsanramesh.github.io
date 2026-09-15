@@ -1818,7 +1818,7 @@
                 <!-- Stat Pills -->
                 <div class="hero-stats-row">
                     <span class="hero-stat-pill">✦ 9+ Years Cyber Defense</span>
-                    <span class="hero-stat-pill">✦ 10+ Engineering Teams Gated</span>
+                    <span class="hero-stat-pill">✦ AI Threat-Model Visualizer (TMaaS)</span>
                     <span class="hero-stat-pill">✦ AI Gateway Hardening</span>
                     <span class="hero-stat-pill">✦ Zero Trust IAM Blueprints</span>
                 </div>
@@ -2450,6 +2450,22 @@
                     <h3>Enterprise SIEM &amp; EDR Threat Detection Pipeline</h3>
                     <p class="project-desc">
                         Deploying multi-cloud SIEM log ingestion, SentinelOne/CrowdStrike EDR playbooks, KQL threat detection rules, and continuous compliance automation.
+                    </p>
+                    <div class="project-link-row">
+                        <span>Read Architecture Details</span>
+                        <span class="project-arrow">→</span>
+                    </div>
+                </div>
+
+                <!-- Project 5: AI-Threat-Model Visualizer (TMaaS) -->
+                <div class="card project-card" onclick="openCaseStudy(4)">
+                    <div class="project-meta">
+                        <span class="project-tag" style="color: #c084fc; background: rgba(192, 132, 252, 0.12); border: 1px solid rgba(192, 132, 252, 0.3);">PRODUCT &amp; THREAT MODELING</span>
+                        <span class="timeline-date">Featured Innovation</span>
+                    </div>
+                    <h3>AI Threat-Model Visualizer &amp; TMaaS Platform</h3>
+                    <p class="project-desc">
+                        Automated codebase-to-diagram threat modeling engine (inspired by GitDiagram) that parses repository code, cloud manifests, and connected modules into interactive STRIDE &amp; MITRE ATLAS threat flows.
                     </p>
                     <div class="project-link-row">
                         <span>Read Architecture Details</span>
@@ -3155,6 +3171,28 @@ func (g *AtlasGuardrailPolicy) ValidateAgentCall(ctx context.Context, prompt str
 
                     <h4>Business Value</h4>
                     <p>Reduced mean time to detect (MTTD) from several days to under 5 minutes. Successfully automated SOC-2 Type II and ISO-27001 compliance audit trails, ensuring continuous verification of network configurations.</p>
+                `
+            },
+            {
+                tag: "PRODUCT & THREAT MODELING (TMAAS)",
+                title: "AI Threat-Model Visualizer & TMaaS Architecture Platform",
+                client: "Threat-Modeling-as-a-Service (TMaaS) Product",
+                role: "Creator & Lead Security Architect",
+                timeline: "2026 - Present",
+                html: `
+                    <h4>Architectural Vision & Problem Statement</h4>
+                    <p>Traditional threat modeling relies on manual documentation that rapidly becomes stale as cloud architectures and AI agent workflows evolve. The <strong>AI Threat-Model Visualizer</strong> solves this by converting codebases, cloud infrastructure manifests (Terraform, K8s, Helm), and AI agent tool dependencies directly into dynamic, interactive Data Flow Diagrams (DFDs) with real-time risk assessment—similar to how <a href="https://gitdiagram.com/" target="_blank" style="color: var(--primary); text-decoration: underline;">GitDiagram</a> visualizes code flows.</p>
+                    
+                    <h4>Core System Architecture & Modules</h4>
+                    <ul>
+                        <li><strong>Automated Code & AST Topology Parser:</strong> Ingests repository trees, API schemas, microservice routes, and MCP (Model Context Protocol) tool declarations to synthesize an interconnected architectural graph.</li>
+                        <li><strong>Dynamic Trust Boundary Generation:</strong> Automatically identifies ingress edges, VPC subnets, external API sinks, and LLM context boundaries across microservices and AI agent executors.</li>
+                        <li><strong>STRIDE & MITRE ATLAS Threat Engine:</strong> Maps data flows against threat matrices (STRIDE for cloud/APIs, MITRE ATLAS AML.T0051/AML.T0054 for LLM pipelines) to highlight high-risk vectors, missing authentication gates, and unencrypted secrets.</li>
+                        <li><strong>Interactive Visual Canvas & TMaaS API:</strong> Interactive UI built for DevSecOps teams to inspect node-level attack surfaces, simulate exploit vectors, export compliance threat models (SOC 2 / ISO 27001), and trigger CI/CD pull-request security reviews.</li>
+                    </ul>
+
+                    <h4>Future Growth & Product Vision</h4>
+                    <p>Designed to scale into an enterprise <strong>Threat-Modeling-as-a-Service (TMaaS)</strong> product platform, offering automated pull-request threat delta scoring, agentic risk simulation, and live infrastructure drift threat visualization across modern tech flows.</p>
                 `
             }
         ];
