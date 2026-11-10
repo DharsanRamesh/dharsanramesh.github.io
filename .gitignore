@@ -3,3 +3,7 @@ __pycache__/
 .DS_Store
 .vscode/
 .idea/
+node_modules/
+index.html.backup.v1
+case_studies.js
+code_snippets.js
