@@ -1776,6 +1776,9 @@
                 <a href="#about" class="nav-link" onclick="switchView('about'); return false;">About</a>
                 <a href="#experience" class="nav-link" onclick="switchView('experience'); return false;">Experience</a>
                 <a href="#projects" class="nav-link" onclick="switchView('projects'); return false;">Projects</a>
+                <a href="ai-systems.html" class="nav-link">AI Systems</a>
+                <a href="software-architecture.html" class="nav-link">Software Architecture</a>
+                <a href="security-blueprints.html" class="nav-link">Security Blueprints</a>
                 <a href="#contact" class="nav-link" onclick="switchView('contact'); return false;">Contact</a>
             </div>
 
@@ -1841,6 +1844,91 @@
                     <div class="scroll-mouse">
                         <div class="scroll-wheel"></div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Featured Architecture Atlases Section -->
+            <div class="code-showcase-section" style="margin-bottom: 4rem;">
+                <div class="section-header" style="text-align:center; margin: 0 auto 2.5rem auto;">
+                    <span class="section-pretitle">SYSTEM DESIGN &amp; ARCHITECTURE ATLAS</span>
+                    <h2 class="section-title">Curated Multi-Page Architecture Atlases</h2>
+                    <p class="section-subtitle">Deep dive into production-grade system designs, distributed consensus patterns, and AI agent control planes.</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                    
+                    <!-- Atlas Card 1: AI Systems -->
+                    <a href="ai-systems.html" class="experience-card" style="text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; border-color: rgba(6, 182, 212, 0.3);">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                                <span class="logo-shield" style="color:var(--cyan); border-color:rgba(6, 182, 212, 0.4); background:rgba(6, 182, 212, 0.1);">8 BLUEPRINTS</span>
+                                <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">AI ENGINEERING</span>
+                            </div>
+                            <h3 style="font-size:1.35rem; font-weight:700; color:var(--text-primary); margin-bottom:0.75rem;">AI System Designs &amp; Agent Architectures</h3>
+                            <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
+                                Autonomous Agent Control Planes, Model Context Protocol (MCP) Sandboxing, Hybrid RAG with Cross-Encoder Re-ranking, and Real-Time Guardrail Firewalls.
+                            </p>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.5rem;">
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">MCP Sandbox</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">AI Gateway</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">Hybrid RAG</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">OWASP LLM</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.85rem; color:var(--cyan); font-weight:600;">
+                            <span>Explore AI Systems Atlas</span>
+                            <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Atlas Card 2: Software Architecture -->
+                    <a href="software-architecture.html" class="experience-card" style="text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; border-color: rgba(139, 92, 246, 0.3);">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                                <span class="logo-shield" style="color:var(--primary); border-color:rgba(139, 92, 246, 0.4); background:rgba(139, 92, 246, 0.1);">8 BLUEPRINTS</span>
+                                <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">DISTRIBUTED SYSTEMS</span>
+                            </div>
+                            <h3 style="font-size:1.35rem; font-weight:700; color:var(--text-primary); margin-bottom:0.75rem;">Software &amp; Distributed Architecture</h3>
+                            <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
+                                Transactional Outbox with CDC, CQRS &amp; Event Sourcing, Saga Orchestration, Two-Tier Caching (L1/L2), and Distributed Rate Limiting.
+                            </p>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.5rem;">
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">Outbox Pattern</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">CQRS</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">Sagas</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">Envoy Mesh</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.85rem; color:var(--primary); font-weight:600;">
+                            <span>Explore Software Atlas</span>
+                            <span>→</span>
+                        </div>
+                    </a>
+
+                    <!-- Atlas Card 3: Security Blueprints -->
+                    <a href="security-blueprints.html" class="experience-card" style="text-decoration:none; display:flex; flex-direction:column; justify-content:space-between; border-color: rgba(16, 185, 129, 0.3);">
+                        <div>
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                                <span class="logo-shield" style="color:var(--emerald); border-color:rgba(16, 185, 129, 0.4); background:rgba(16, 185, 129, 0.1);">6 BLUEPRINTS</span>
+                                <span style="font-family:var(--font-mono); font-size:0.75rem; color:var(--text-muted);">ZERO-TRUST &amp; CLOUD</span>
+                            </div>
+                            <h3 style="font-size:1.35rem; font-weight:700; color:var(--text-primary); margin-bottom:0.75rem;">Security &amp; Zero-Trust Blueprints</h3>
+                            <p style="font-size:0.9rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.25rem;">
+                                Cross-Cloud Zero-Trust Ingress, SPIFFE/SVID Machine Identity, Multi-Cloud SIEM Ingestion, Sigstore Cosign Gating, and Hardware Security Modules (HSM).
+                            </p>
+                            <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.5rem;">
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">Zero-Trust Ingress</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">SPIFFE/SVID</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">SIEM/EDR</span>
+                                <span class="hero-stat-pill" style="font-size:0.7rem; padding:0.2rem 0.6rem;">FIPS HSM</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:0.5rem; font-family:var(--font-mono); font-size:0.85rem; color:var(--emerald); font-weight:600;">
+                            <span>Explore Security Atlas</span>
+                            <span>→</span>
+                        </div>
+                    </a>
+
                 </div>
             </div>
 

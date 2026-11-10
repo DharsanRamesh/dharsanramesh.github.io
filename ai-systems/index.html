@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI System Designs &amp; Agentic Architectures | Dharsan Ramesh</title>
+    <meta name="description" content="Curated Atlas of Production AI System Designs: Autonomous Agents, MCP Sandboxing, AI Gateways, High-Throughput RAG, and AI Guardrails by Dharsan Ramesh.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="../css/shared.css">
+</head>
+<body>
+    <div class="grid-background"></div>
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                DHARSAN RAMESH
+                <span class="logo-shield">Secured Software System Designs</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../ai-systems/" class="nav-link active-page">AI System Designs</a>
+                <a href="../software-architecture/" class="nav-link">Software Architecture</a>
+                <a href="../security-blueprints/" class="nav-link">Security Blueprints</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-cta">
+                <a href="index.html#contact" class="btn btn-primary">
+                    <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Consult Architect
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container" style="padding-top: 5rem; min-height: 85vh;">
+        
+        <!-- Hero Header -->
+        <header class="atlas-hero">
+            <div class="atlas-badge">
+                <span>✦</span>
+                <span>AI ENGINEERING &amp; AGENTIC SYSTEMS ATLAS</span>
+            </div>
+            <h1 class="atlas-title">AI System Designs &amp; Agent Architectures</h1>
+            <p class="atlas-desc">
+                Production architectures and security-hardened patterns for Autonomous AI Agents, Model Context Protocol (MCP) Sandboxes, Enterprise AI Gateways, High-Throughput RAG, and Real-Time Guardrail Pipelines.
+            </p>
+        </header>
+
+        <!-- Search & Filter Controls -->
+        <section class="atlas-search-strip">
+            <div class="search-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="search-input" class="atlas-search-input" placeholder="Search AI architectures by keyword, pattern, or framework (e.g. MCP, RAG, Gateway, Injection)..." oninput="filterArchitectures()">
+            </div>
+            <div class="filter-chips-row">
+                <button class="filter-chip active" onclick="filterByTag('all', this)">All Blueprints (8)</button>
+                <button class="filter-chip" onclick="filterByTag('agents', this)">Autonomous Agents &amp; Control Planes</button>
+                <button class="filter-chip" onclick="filterByTag('mcp', this)">MCP &amp; Tool Isolation</button>
+                <button class="filter-chip" onclick="filterByTag('gateway', this)">AI Gateways &amp; Inference</button>
+                <button class="filter-chip" onclick="filterByTag('rag', this)">RAG &amp; Vector Systems</button>
+                <button class="filter-chip" onclick="filterByTag('security', this)">AI Security &amp; Guardrails</button>
+            </div>
+        </section>
+
+        <!-- Blueprints Grid -->
+        <div class="arch-grid" id="blueprints-container">
+            
+            <!-- Card 1 -->
+            <article class="arch-card" data-tags="agents security control-plane">
+                <div>
+                    <div class="arch-card-tag">AGENTIC PLATFORM &amp; GOVERNANCE</div>
+                    <h2 class="arch-card-title">Enterprise AI Agent Control Plane &amp; Governance Engine</h2>
+                    <p class="arch-card-desc">
+                        A central orchestrator handling server-side invoker attribution, hierarchical spend ceilings, skill bundle resolution, and sandboxed tool brokerage across multi-tenant agent execution workflows.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Zero Long-Lived Secrets</span>
+                        <span class="invariant-pill">Deterministic Tool Narrowing</span>
+                        <span class="invariant-pill">Per-User Spend Caps</span>
+                        <span class="invariant-pill">gVisor Isolation</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(0)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="arch-card" data-tags="mcp security isolation">
+                <div>
+                    <div class="arch-card-tag">MCP SECURITY &amp; HOST ISOLATION</div>
+                    <h2 class="arch-card-title">Model Context Protocol (MCP) Perimeter &amp; Host Sandbox</h2>
+                    <p class="arch-card-desc">
+                        Secure runtime boundary for MCP client-server communication, preventing indirect prompt-injected tool escapes, arbitrary command execution, and unauthorized local socket/network access.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Strict JSON-RPC Filtering</span>
+                        <span class="invariant-pill">Read-Only Filesystem Jail</span>
+                        <span class="invariant-pill">Ephemeral Docker/MicroVM</span>
+                        <span class="invariant-pill">Schema Attestation</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(1)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="arch-card" data-tags="gateway inference performance">
+                <div>
+                    <div class="arch-card-tag">AI GATEWAY &amp; ROUTING</div>
+                    <h2 class="arch-card-title">Enterprise AI Gateway &amp; Multi-Model Inference Router</h2>
+                    <p class="arch-card-desc">
+                        High-throughput stateless proxy providing semantic vector caching, dynamic token bucket rate limiting, automated fallback cascades across frontier LLM providers, and real-time PII token redaction.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Semantic Caching (&lt;5ms)</span>
+                        <span class="invariant-pill">Provider Failover SLA: 99.99%</span>
+                        <span class="invariant-pill">Presidio PII Masking</span>
+                        <span class="invariant-pill">Distributed Token Bucket</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(2)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="arch-card" data-tags="rag vector retrieval">
+                <div>
+                    <div class="arch-card-tag">RAG &amp; CONTEXT ENGINEERING</div>
+                    <h2 class="arch-card-title">Production Hybrid RAG Engine: Sparse/Dense &amp; Cross-Encoder Re-ranking</h2>
+                    <p class="arch-card-desc">
+                        Dual-stream retrieval pipeline fusing Dense Vector embeddings (HNSW in Qdrant/Milvus) with Sparse lexical BM25 search via Reciprocal Rank Fusion (RRF), followed by Cross-Encoder re-ranking and context packing.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Hybrid RRF (Dense + BM25)</span>
+                        <span class="invariant-pill">Cross-Encoder Rerank</span>
+                        <span class="invariant-pill">Parent-Document Chunking</span>
+                        <span class="invariant-pill">Context Compression</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(3)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="arch-card" data-tags="security guardrails firewalls">
+                <div>
+                    <div class="arch-card-tag">AI SECURITY &amp; GUARDRAILS</div>
+                    <h2 class="arch-card-title">Real-Time LLM Prompt Injection &amp; Context-Poisoning Firewall</h2>
+                    <p class="arch-card-desc">
+                        In-line stream interceptor enforcing multi-layer defenses against direct prompt injection, indirect context poisoning, hidden Unicode jailbreaks, canary token leakage, and automated data exfiltration.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">OWASP LLM Top 10 Aligned</span>
+                        <span class="invariant-pill">Dual-Model Guardrail</span>
+                        <span class="invariant-pill">Canary Token Leak Detection</span>
+                        <span class="invariant-pill">Output Safety Scanners</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(4)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="arch-card" data-tags="agents orchestration multi-agent">
+                <div>
+                    <div class="arch-card-tag">MULTI-AGENT SYSTEMS</div>
+                    <h2 class="arch-card-title">Agent-to-Agent (A2A) &amp; Multi-Agent Swarm Orchestration</h2>
+                    <p class="arch-card-desc">
+                        State-graph multi-agent collaboration mesh using LangGraph/CrewAI featuring supervisor-worker task delegation, cycle detection, per-agent memory partitioning, and decentralized consensus checkpoints.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Deterministic State Graphs</span>
+                        <span class="invariant-pill">Infinite Loop Prevention</span>
+                        <span class="invariant-pill">Strict Memory Scoping</span>
+                        <span class="invariant-pill">Human-in-the-Loop Intercept</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(5)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="arch-card" data-tags="security agents iam">
+                <div>
+                    <div class="arch-card-tag">IDENTITY &amp; MACHINE IAM</div>
+                    <h2 class="arch-card-title">Non-Human Agentic IAM &amp; Ephemeral Secret Brokerage</h2>
+                    <p class="arch-card-desc">
+                        Workload Identity Federation (WIF) and SPIFFE SVID architecture granting autonomous AI agents fine-grained, short-lived (5-min) scoped credentials via an isolated cryptographic token escrow proxy.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">SPIFFE/SVID Attestation</span>
+                        <span class="invariant-pill">5-Min Ephemeral Tokens</span>
+                        <span class="invariant-pill">Workload Identity Fed</span>
+                        <span class="invariant-pill">Zero Agent Memory Secrets</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(6)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="arch-card" data-tags="gateway inference performance">
+                <div>
+                    <div class="arch-card-tag">AI INFRASTRUCTURE &amp; SERVING</div>
+                    <h2 class="arch-card-title">High-Throughput LLM Inference Serving Cluster (vLLM &amp; TensorRT)</h2>
+                    <p class="arch-card-desc">
+                        Scalable GPU inference cluster deploying open-weights models (Llama 3, DeepSeek, Mistral) with continuous batching, PagedAttention vRAM allocation, tensor parallelism, and speculative decoding.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">PagedAttention (0% Waste)</span>
+                        <span class="invariant-pill">Continuous Batching</span>
+                        <span class="invariant-pill">Speculative Decoding 2.5x</span>
+                        <span class="invariant-pill">Ray Cluster Autoscaling</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(7)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Blueprint Deep Dive Modal -->
+    <div id="blueprint-modal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <div>
+                    <span id="modal-badge" class="logo-shield" style="margin-bottom:0.5rem; display:inline-block;"></span>
+                    <h2 id="modal-title" style="font-size:1.6rem; margin-top:0.25rem;"></h2>
+                    <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">
+                        ARCHITECT: <span style="color:var(--text-primary);">Dharsan Ramesh (Senior Staff Architect)</span> | FOCUS: <span id="modal-domain" style="color:var(--cyan);"></span>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeBlueprintModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body" style="font-size:0.95rem; line-height:1.7;">
+                <!-- Injected Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Dharsan Ramesh</h3>
+                <p>Senior Staff Security Architect // Secured Software System Designs</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../ai-systems/">AI Systems</a>
+                <a href="../software-architecture/">Software Architecture</a>
+                <a href="../security-blueprints/">Security Blueprints</a>
+                <a href="../Dharsan_Ramesh_Resume.pdf" target="_blank">Resume</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Dharsan Ramesh. All rights reserved. Architected with high resilience and defense-in-depth principles.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        const blueprints = [
+            {
+                tag: "AGENTIC PLATFORM & GOVERNANCE",
+                domain: "Autonomous Agent Orchestration",
+                title: "Enterprise AI Agent Control Plane & Governance Engine",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Designed to solve the enterprise multi-agent sprawl dilemma: how to empower autonomous agents with powerful API toolsets while maintaining strict organizational spend caps, deterministic tool narrowing, and air-tight credential protection.</p>
+                    
+                    <div class="blueprint-diagram">
+[Client User / App] 
+       │ (Signed JWT with Invoker Context)
+       ▼
+[Edge Ingress / API Gateway] ──► (WAF + Cloud Armor Rate Limiting)
+       │
+       ▼
+[Agent Control Plane Engine]
+  ├── [Identity & Token Escrow Broker] ──► (Generates 5-min Spiffe SVIDs)
+  ├── [Spend Ceilings & Token Metering] ──► (Redis Cluster Atomicity)
+  └── [Tool Narrowing Validator] ──► (Filters MCP Server Tools by Scope)
+       │
+       ▼
+[Sandboxed Execution Worker Pool] (gVisor MicroVMs)
+  ├── Agent Runtime (LangGraph / CrewAI)
+  ├── Ephemeral Memory Partition
+  └── Egress Proxy (Outbound Domain Whitelisting)
+       │
+       ▼
+[Enterprise APIs / Vector Stores / Third-Party Webhooks]
+                    </div>
+
+                    <h3>Key Architectural Invariants</h3>
+                    <ul>
+                        <li><strong>Server-Side Invoker Attribution:</strong> Agents never run under a single monolithic super-admin identity. Every downstream tool call carries cryptographically verifiable telemetry binding the operation to the originating human initiator.</li>
+                        <li><strong>Deterministic Tool Narrowing:</strong> Before the model even sees its system prompt, tool availability is dynamically computed against the user's role-based permissions matrix.</li>
+                        <li><strong>Zero Agent Memory Secrets:</strong> Third-party API keys (Stripe, GitHub, AWS STS) are never placed in the prompt context or agent working memory. They are injected at the execution proxy boundary.</li>
+                    </ul>
+                `
+            },
+            {
+                tag: "MCP SECURITY & HOST ISOLATION",
+                domain: "Model Context Protocol Sandbox",
+                title: "Model Context Protocol (MCP) Perimeter & Host Sandbox",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>The Model Context Protocol (MCP) creates high-risk exposure if client and server run on host machines with unfettered system calls. This blueprint establishes a containerized, read-only boundary with deep JSON-RPC message inspection.</p>
+
+                    <div class="blueprint-diagram">
+[LLM Agent Core] 
+       │
+       ▼
+[MCP Host Client Proxy]
+       │
+       ├─► [Schema & Command Validator] (Rejects unauthorized exec / shell injection)
+       ├─► [Rate Limiter & Argument Sanitizer] (Unicode normalization & length limits)
+       │
+═══════╪═════════════════════════════════════════════════════════════════════
+       ▼ [CONTAINER JAIL BOUNDARY (gVisor runsc / Read-Only Rootfs)]
+[Ephemeral MCP Server Process]
+  ├── /workspace (Isolated Temporary Scratch Mount, Max 50MB, noexec)
+  ├── No Host Sockets / No Localhost IPC
+  ├── Blocked Metadata Endpoints (169.254.169.254)
+  └── Seccomp Profile (Blocks ptrace, mount, bpf)
+       │
+       ▼
+[Target Resource (Sandboxed Postgres / File Store / External Read-Only API)]
+                    </div>
+
+                    <h3>Threat Mitigations</h3>
+                    <ul>
+                        <li><strong>Indirect Prompt Injection Containment:</strong> Even if malicious web content instructs the agent to run dangerous commands, the MCP container lacks write permissions and host socket access.</li>
+                        <li><strong>Cloud Metadata Exfiltration Defense:</strong> Explicit iptables egress drops on <code>169.254.169.254</code> prevent AWS/GCP instance credential scraping.</li>
+                    </ul>
+                `
+            },
+            {
+                tag: "AI GATEWAY & ROUTING",
+                domain: "Inference Proxy & Optimization",
+                title: "Enterprise AI Gateway & Multi-Model Inference Router",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Stateless edge gateway terminating all outbound model requests across the enterprise. Delivers sub-5ms semantic cache hits, automated fallback model cascades, real-time PII anonymization, and cross-department token budgeting.</p>
+
+                    <div class="blueprint-diagram">
+[Internal Services / Applications]
+       │
+       ▼
+[Enterprise AI Gateway]
+  ├── [Authentication & Department Quota Check]
+  ├── [PII Scrubber (Microsoft Presidio)] ──► (Masks SSNs, Emails, API Keys)
+  ├── [Semantic Cache (Redis Vector DB)]
+  │     ├── Cache HIT (&lt;5ms) ──► Returns Cached Embedding Response
+  │     └── Cache MISS ────────► Continues to Router
+  ├── [Model Cascade & Fallback Router]
+  │     ├── Primary: Claude 3.5 Sonnet / GPT-4o
+  │     ├── Secondary Fallback: AWS Bedrock / Mistral Large
+  │     └── Emergency Circuit Breaker: Local vLLM Cluster
+  └── [Asynchronous Telemetry Egress] ──► (ClickHouse / Prometheus Metrics)
+                    </div>
+
+                    <h3>Design Trade-Offs</h3>
+                    <ul>
+                        <li><strong>Semantic Similarity Threshold:</strong> Tuned to cosine distance &gt;= 0.94. Avoids returning stale or subtly context-inappropriate answers while still achieving 28% global cost reduction.</li>
+                        <li><strong>Stateless Resilience:</strong> Gateway instances run across multi-region ECS/Cloud Run clusters with zero local state, relying on distributed Redis for sliding-window token counters.</li>
+                    </ul>
+                `
+            },
+            {
+                tag: "RAG & CONTEXT ENGINEERING",
+                domain: "High-Scale Information Retrieval",
+                title: "Production Hybrid RAG Engine: Sparse/Dense & Cross-Encoder Re-ranking",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Pure vector search frequently misses exact keyword matches (part numbers, error codes, legal IDs), while keyword search fails on semantic intent. This production RAG engine unites both via Reciprocal Rank Fusion followed by a high-precision cross-encoder.</p>
+
+                    <div class="blueprint-diagram">
+[User Search Query]
+       │
+       ├──► [Query Expansion / HyDE Generator] (Generates hypothetical answer)
+       │
+       ├──► [Dense Vector Retrieval] (Qdrant HNSW Index, Top 50 results)
+       │         ▲
+       │         └── [Embedding Model: Cohere v3 / text-embedding-3-large]
+       │
+       └──► [Sparse Lexical Retrieval] (BM25 Engine, Top 50 results)
+                 │
+                 ▼
+     [Reciprocal Rank Fusion (RRF)] ──► Merges & scores combined top-60 candidates
+                 │
+                 ▼
+     [Cross-Encoder Re-Ranker (BGE-Reranker-Large)] ──► Re-evaluates top 10
+                 │
+                 ▼
+     [Context Compression & Prompt Assembler] ──► Fits exact token window
+                 │
+                 ▼
+     [Generator LLM] ──► Produces grounded answer with inline source citations
+                    </div>
+
+                    <h3>Key Architectural Invariants</h3>
+                    <ul>
+                        <li><strong>Hierarchical Chunking:</strong> Documents are stored in small 256-token retrieval chunks, but linked to 1024-token parent context blocks passed to the model upon retrieval.</li>
+                        <li><strong>Hallucination Defense:</strong> The prompt strictly mandates refusal if cross-encoder confidence falls below an empirical grounding threshold.</li>
+                    </ul>
+                `
+            },
+            {
+                tag: "AI SECURITY & GUARDRAILS",
+                domain: "Runtime Defense & Content Safety",
+                title: "Real-Time LLM Prompt Injection & Context-Poisoning Firewall",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Designed around OWASP Top 10 for LLMs and MITRE ATLAS matrices. Provides millisecond-level inline evaluation of prompts and model completions to halt prompt injection, jailbreaking, and data leakage.</p>
+
+                    <div class="blueprint-diagram">
+[Incoming Prompt]
+       │
+       ▼
+[Inbound Security Interceptor]
+  ├── Heuristic Filter (Detects Base64, Cyrillic homoglyphs, delimiter collisions)
+  ├── Specialized Classifier (Lakera Guard / LlamaGuard / Custom DeBERTa)
+  └── Canary Token Injector (Embeds cryptographic watermarks in context)
+       │
+   [PASS]
+       ▼
+[LLM Inference Execution]
+       │
+       ▼
+[Outbound Security Interceptor]
+  ├── Canary Token Audit (Flags if canary watermark appears in generated output)
+  ├── Secret Scanner (Detects leaked private keys, connection strings, auth tokens)
+  └── Content Safety Policy (Verifies non-toxic, brand-aligned output)
+       │
+       ▼
+[Sanitized Response to Client]
+                    </div>
+                `
+            },
+            {
+                tag: "MULTI-AGENT SYSTEMS",
+                domain: "State Graphs & Agent Teams",
+                title: "Agent-to-Agent (A2A) & Multi-Agent Swarm Orchestration",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Production orchestration of specialized agent teams executing multi-step business operations. Implements deterministic state-graph workflows with strict budget tracking, cycle breakers, and human-in-the-loop checkpoints.</p>
+
+                    <div class="blueprint-diagram">
+              [Task Intake & Decomposer]
+                          │
+                          ▼
+              [Supervisor Orchestrator]
+            ┌─────────────┼─────────────┐
+            ▼             ▼             ▼
+      [Coder Agent]  [Reviewer Agent] [Audit Agent]
+            │             │             │
+            └─────────────┬─────────────┘
+                          │ (State Graph Checkpoint)
+                          ▼
+            [Consensus & Quality Evaluation]
+              ├── If Rejected: Re-routes with critique (Max 3 recursions)
+              └── If Approved: Proceeds to Production Dispatcher
+                    </div>
+                `
+            },
+            {
+                tag: "IDENTITY & MACHINE IAM",
+                domain: "Non-Human Agent Identity",
+                title: "Non-Human Agentic IAM & Ephemeral Secret Brokerage",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Eliminates the dangerous practice of assigning static IAM keys to autonomous agents. Establishes machine identity using SPIFFE/SVIDs and dynamic Workload Identity Federation.</p>
+
+                    <div class="blueprint-diagram">
+[Agent Kubernetes Pod] ──► [SPIRE Node Agent] (Attests Pod Identity)
+                                 │
+                                 ▼ (Issues Ephemeral X.509 SVID)
+[Agent Runtime] ──► [Central Token Brokerage Service]
+                          │ (Validates SVID + Agent Scope)
+                          ▼
+[Cloud STS (AWS / GCP / Azure)] ──► Returns short-lived 5-minute scoped token
+                          │
+                          ▼
+[Target Cloud Service (S3 / BigQuery / RDS)]
+                    </div>
+                `
+            },
+            {
+                tag: "AI INFRASTRUCTURE & SERVING",
+                domain: "High-Performance Inference",
+                title: "High-Throughput LLM Inference Serving Cluster (vLLM & TensorRT)",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Low-latency, high-concurrency self-hosted inference platform serving 70B+ parameter open-source models with continuous batching and virtual memory page management.</p>
+
+                    <div class="blueprint-diagram">
+[Client Requests] ──► [Envoy Load Balancer with Streaming Support]
+                               │
+                               ▼
+[vLLM Inference Cluster Nodes (NVIDIA H100 / A100)]
+  ├── PagedAttention Memory Manager (Eliminates 96% of vRAM fragmentation)
+  ├── Continuous Batching Scheduler (Dynamically slots new prompts into active runs)
+  ├── Tensor Parallelism Engine (Megatron-LM style tensor splitting across GPUs)
+  └── Speculative Decoding Worker (Small draft model speeds up target generation 2.5x)
+                               │
+                               ▼ (HTTP/2 SSE Token Stream)
+[Client Real-Time Stream]
+                    </div>
+                `
+            }
+        ];
+
+        function filterArchitectures() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.arch-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.arch-card-title').textContent.toLowerCase();
+                const desc = card.querySelector('.arch-card-desc').textContent.toLowerCase();
+                const tag = card.querySelector('.arch-card-tag').textContent.toLowerCase();
+                
+                if (title.includes(query) || desc.includes(query) || tag.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterByTag(tag, btn) {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.arch-card');
+            cards.forEach(card => {
+                const cardTags = card.getAttribute('data-tags') || '';
+                if (tag === 'all' || cardTags.includes(tag)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openBlueprintModal(idx) {
+            const item = blueprints[idx];
+            if (!item) return;
+
+            document.getElementById('modal-badge').textContent = item.tag;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-domain').textContent = item.domain;
+            document.getElementById('modal-body').innerHTML = item.html;
+
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlueprintModal() {
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('blueprint-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('blueprint-modal')) {
+                closeBlueprintModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBlueprintModal();
+        });
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.nav-links');
+            if (nav) {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'rgba(6, 4, 10, 0.95)';
+                nav.style.padding = '1.5rem';
+                nav.style.borderBottom = '1px solid var(--border-color)';
+            }
+        }
+    </script>
+</body>
+</html>

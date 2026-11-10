@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software &amp; Distributed Systems Architecture | Dharsan Ramesh</title>
+    <meta name="description" content="Curated Atlas of Software Architecture &amp; Distributed Systems: Event-Driven Systems, CQRS, Sagas, Distributed Caching, and Fault-Tolerant Microservices by Dharsan Ramesh.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="../css/shared.css">
+</head>
+<body>
+    <div class="grid-background"></div>
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                DHARSAN RAMESH
+                <span class="logo-shield">Secured Software System Designs</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../ai-systems/" class="nav-link">AI System Designs</a>
+                <a href="../software-architecture/" class="nav-link active-page">Software Architecture</a>
+                <a href="../security-blueprints/" class="nav-link">Security Blueprints</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-cta">
+                <a href="index.html#contact" class="btn btn-primary">
+                    <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Consult Architect
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container" style="padding-top: 5rem; min-height: 85vh;">
+        
+        <!-- Hero Header -->
+        <header class="atlas-hero">
+            <div class="atlas-badge">
+                <span>✦</span>
+                <span>DISTRIBUTED SYSTEMS &amp; SOFTWARE ARCHITECTURE ATLAS</span>
+            </div>
+            <h1 class="atlas-title">Software &amp; Distributed System Designs</h1>
+            <p class="atlas-desc">
+                High-scale distributed systems blueprints, event-driven topologies, transactional patterns, distributed caching, and resilient microservice architectures engineered for mission-critical reliability.
+            </p>
+        </header>
+
+        <!-- Search & Filter Controls -->
+        <section class="atlas-search-strip">
+            <div class="search-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="search-input" class="atlas-search-input" placeholder="Search software architecture patterns (e.g. Outbox, Saga, CQRS, Caching, Rate Limiter)..." oninput="filterArchitectures()">
+            </div>
+            <div class="filter-chips-row">
+                <button class="filter-chip active" onclick="filterByTag('all', this)">All Blueprints (8)</button>
+                <button class="filter-chip" onclick="filterByTag('eda', this)">Event-Driven &amp; Messaging</button>
+                <button class="filter-chip" onclick="filterByTag('data', this)">Data &amp; CQRS</button>
+                <button class="filter-chip" onclick="filterByTag('resilience', this)">Fault Tolerance &amp; Sagas</button>
+                <button class="filter-chip" onclick="filterByTag('gateway', this)">API Gateway &amp; BFF</button>
+                <button class="filter-chip" onclick="filterByTag('ddd', this)">DDD &amp; Microservices</button>
+            </div>
+        </section>
+
+        <!-- Blueprints Grid -->
+        <div class="arch-grid" id="blueprints-container">
+            
+            <!-- Card 1 -->
+            <article class="arch-card" data-tags="eda data messaging">
+                <div>
+                    <div class="arch-card-tag">EVENT-DRIVEN ARCHITECTURE</div>
+                    <h2 class="arch-card-title">Transactional Outbox Pattern &amp; CDC Pipeline</h2>
+                    <p class="arch-card-desc">
+                        Guarantees at-least-once message publishing across distributed databases without distributed 2PC locks, using a local relational outbox table and Debezium Change Data Capture (CDC) streaming to Apache Kafka.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">At-Least-Once Delivery</span>
+                        <span class="invariant-pill">Zero Dual-Write Skew</span>
+                        <span class="invariant-pill">Debezium CDC Engine</span>
+                        <span class="invariant-pill">Kafka Partition Ordering</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(0)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="arch-card" data-tags="data cdc cqrs">
+                <div>
+                    <div class="arch-card-tag">DATA ARCHITECTURE &amp; CQRS</div>
+                    <h2 class="arch-card-title">CQRS &amp; Event Sourcing with Read-Model Projections</h2>
+                    <p class="arch-card-desc">
+                        Separates high-throughput ACID write domains from denormalized, sub-millisecond query models. Events serve as the single source of truth, projected asynchronously into Elasticsearch and Redis.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Append-Only Event Store</span>
+                        <span class="invariant-pill">Sub-10ms Read Projection</span>
+                        <span class="invariant-pill">Time-Travel State Replay</span>
+                        <span class="invariant-pill">Schema Evolution (Upcasting)</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(1)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="arch-card" data-tags="resilience gateway performance">
+                <div>
+                    <div class="arch-card-tag">DISTRIBUTED TRAFFIC &amp; RATE LIMITING</div>
+                    <h2 class="arch-card-title">High-Throughput Distributed Rate Limiter &amp; Token Bucket</h2>
+                    <p class="arch-card-desc">
+                        Multi-layer rate limiting cluster handling 500k+ req/sec using Redis Cluster sliding-window Lua scripts combined with localized in-process leaky buckets for zero-latency micro-burst absorption.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Redis Cluster Lua Atomicity</span>
+                        <span class="invariant-pill">Sliding Window Log</span>
+                        <span class="invariant-pill">Micro-Burst Smoothing</span>
+                        <span class="invariant-pill">Fail-Open Graceful Degrade</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(2)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="arch-card" data-tags="resilience transactions sagas">
+                <div>
+                    <div class="arch-card-tag">DISTRIBUTED TRANSACTIONS</div>
+                    <h2 class="arch-card-title">Saga Orchestrator with Compensating Transactions</h2>
+                    <p class="arch-card-desc">
+                        Finite State Machine (FSM) managing multi-service business workflows (Order -> Payment -> Inventory -> Shipping) with idempotent forward executions and automated backwards compensating rollback triggers.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Idempotent Step Handlers</span>
+                        <span class="invariant-pill">Compensating Rollbacks</span>
+                        <span class="invariant-pill">Temporal / Camunda Engine</span>
+                        <span class="invariant-pill">Dead Letter Queue (DLQ)</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(3)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="arch-card" data-tags="gateway bff api">
+                <div>
+                    <div class="arch-card-tag">API TOPOLOGY &amp; GATEWAYS</div>
+                    <h2 class="arch-card-title">API Gateway &amp; Backend-For-Frontend (BFF) Federation</h2>
+                    <p class="arch-card-desc">
+                        Decouples client presentation needs from backend microservices by running dedicated lightweight BFF proxies for Web, Mobile, and Public APIs behind a unified Envoy / Cloud Armor perimeter.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Domain Payload Optimization</span>
+                        <span class="invariant-pill">GraphQL Federation / REST</span>
+                        <span class="invariant-pill">Centralized Auth / JWT Validation</span>
+                        <span class="invariant-pill">Sub-5ms Protocol Translation</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(4)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="arch-card" data-tags="data performance caching">
+                <div>
+                    <div class="arch-card-tag">CACHING &amp; HIGH THROUGHPUT</div>
+                    <h2 class="arch-card-title">Two-Tier Distributed Caching (L1 Memory + L2 Redis)</h2>
+                    <p class="arch-card-desc">
+                        Sub-millisecond data retrieval combining ultra-fast L1 local process memory (Go-Cache/Caffeine) with an L2 Redis Cluster. Employs probabilistic early expiration (XFetch) and pub/sub cache invalidation.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">L1 Cache Latency: &lt;100μs</span>
+                        <span class="invariant-pill">XFetch Early Recompute</span>
+                        <span class="invariant-pill">Redis Pub/Sub Invalidation</span>
+                        <span class="invariant-pill">Cache Stampede Elimination</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(5)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="arch-card" data-tags="ddd microservices architecture">
+                <div>
+                    <div class="arch-card-tag">DOMAIN-DRIVEN DESIGN</div>
+                    <h2 class="arch-card-title">Domain-Driven Design (DDD) &amp; Strategic Bounded Contexts</h2>
+                    <p class="arch-card-desc">
+                        Architectural blueprint structuring enterprise software into autonomous bounded contexts with explicit ubiquitous language, Aggregate Roots, Domain Events, and Anti-Corruption Layers (ACL).
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Clean / Hexagonal Ports</span>
+                        <span class="invariant-pill">Anti-Corruption Layer (ACL)</span>
+                        <span class="invariant-pill">Zero Cross-Domain DB Joins</span>
+                        <span class="invariant-pill">Domain Event Dispatching</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(6)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="arch-card" data-tags="resilience microservices fault-tolerance">
+                <div>
+                    <div class="arch-card-tag">FAULT TOLERANCE &amp; RESILIENCE</div>
+                    <h2 class="arch-card-title">Fault-Tolerant Microservices: Circuit Breakers &amp; Bulkheads</h2>
+                    <p class="arch-card-desc">
+                        Hardened service mesh patterns preventing cascading outages across microservice grids using Envoy proxy circuit breakers, bulkhead concurrency limits, exponential backoff with jitter, and adaptive fallback queues.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Cascade Failure Isolation</span>
+                        <span class="invariant-pill">Adaptive Concurrency Limits</span>
+                        <span class="invariant-pill">Full Jitter Exponential Backoff</span>
+                        <span class="invariant-pill">Envoy Outlier Detection</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(7)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Blueprint Deep Dive Modal -->
+    <div id="blueprint-modal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <div>
+                    <span id="modal-badge" class="logo-shield" style="margin-bottom:0.5rem; display:inline-block;"></span>
+                    <h2 id="modal-title" style="font-size:1.6rem; margin-top:0.25rem;"></h2>
+                    <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">
+                        ARCHITECT: <span style="color:var(--text-primary);">Dharsan Ramesh (Senior Staff Architect)</span> | FOCUS: <span id="modal-domain" style="color:var(--cyan);"></span>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeBlueprintModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body" style="font-size:0.95rem; line-height:1.7;">
+                <!-- Injected Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Dharsan Ramesh</h3>
+                <p>Senior Staff Security Architect // Secured Software System Designs</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../ai-systems/">AI Systems</a>
+                <a href="../software-architecture/">Software Architecture</a>
+                <a href="../security-blueprints/">Security Blueprints</a>
+                <a href="../Dharsan_Ramesh_Resume.pdf" target="_blank">Resume</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Dharsan Ramesh. All rights reserved. Architected with high resilience and defense-in-depth principles.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        const blueprints = [
+            {
+                tag: "EVENT-DRIVEN ARCHITECTURE",
+                domain: "Reliable Asynchronous Messaging",
+                title: "Transactional Outbox Pattern & CDC Pipeline",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Resolves the dual-write anomaly where a service must update its local database and publish an event to a message broker. Instead of attempting distributed 2-Phase Commit (2PC) transactions, the event is atomically written to an Outbox table in the same local transaction.</p>
+
+                    <div class="blueprint-diagram">
+[Client Order Request]
+       │
+       ▼
+[Order Service Domain Logic]
+       │
+   (BEGIN LOCAL DB TRANSACTION)
+       ├── 1. INSERT INTO orders (...)
+       └── 2. INSERT INTO outbox_events (event_id, aggregate_id, payload, created_at)
+   (COMMIT TRANSACTION)
+       │
+       ▼
+[Postgres Write-Ahead Log (WAL)]
+       │
+       ▼ (Asynchronous Streaming)
+[Debezium CDC Connector (Kafka Connect)]
+       │
+       ▼
+[Apache Kafka Cluster] (Topic: orders.created)
+       │
+       ├─► [Inventory Service] (Idempotent Consumer)
+       ├─► [Notification Service] (Idempotent Consumer)
+       └─► [Analytics & Data Warehouse Pipeline]
+                    </div>
+
+                    <h3>Design Trade-Offs</h3>
+                    <ul>
+                        <li><strong>Zero Dual-Write Failure:</strong> The order cannot succeed without the outbox entry being recorded. If Kafka is temporarily down, the transaction commits safely and CDC drains the queue upon recovery.</li>
+                        <li><strong>Idempotency Requirement:</strong> Outbox delivers at-least-once. Downstream consumers must maintain an idempotent deduplication table using the message <code>event_id</code>.</li>
+                    </ul>
+                `
+            },
+            {
+                tag: "DATA ARCHITECTURE & CQRS",
+                domain: "Command Query Responsibility Segregation",
+                title: "CQRS & Event Sourcing with Read-Model Projections",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Separates complex write logic and business validation from high-speed querying. Write operations generate immutable domain events appended to an event store, which background projection workers stream to optimized read databases.</p>
+
+                    <div class="blueprint-diagram">
+      [Client Commands]                                   [Client Queries]
+             │                                                   │
+             ▼                                                   ▼
+     [Command Handler]                                    [Query Service]
+             │                                                   │
+    (Validates Business Rules)                                   ▼
+             │                                        [Read-Model Projections]
+             ▼                                        ├── Redis (Hot Cache)
+     [Append Event Store]                             ├── Elasticsearch (Full-Text)
+             │                                        └── Postgres (Denormalized Views)
+             ▼                                                   ▲
+    [Event Log Streaming] (Kafka / Kinesis)                      │
+             │                                                   │
+             └────────► [Projection Engine Workers] ─────────────┘
+                    </div>
+                `
+            },
+            {
+                tag: "DISTRIBUTED TRAFFIC & RATE LIMITING",
+                domain: "High-Scale Traffic Management",
+                title: "High-Throughput Distributed Rate Limiter & Token Bucket",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Protects distributed platforms from denial of service and noisy-neighbor quota exhaustion. Implements sliding-window counter tracking across Redis Cluster with atomic Lua scripts.</p>
+
+                    <div class="blueprint-diagram">
+[Inbound Traffic (500k req/s)]
+       │
+       ▼
+[Edge Envoy Load Balancer]
+       │ (Calls Rate Limit Service via gRPC)
+       ▼
+[Rate Limiting Service Pool]
+  ├── In-Memory Local Leaky Bucket (Handles sub-millisecond microbursts)
+  └── Redis Cluster (Atomic Lua Script Sliding Window Counter)
+       │
+   [ALLOW / DENY]
+       ├─► [DENY] ──► Returns HTTP 429 (Retry-After Header)
+       └─► [ALLOW] ──► Dispatches Request to Upstream Microservices
+                    </div>
+                `
+            },
+            {
+                tag: "DISTRIBUTED TRANSACTIONS",
+                domain: "Saga Execution & Coordination",
+                title: "Saga Orchestrator with Compensating Transactions",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Manages distributed transactions across microservices with distinct databases. Uses an orchestrator FSM that executes forward commands and triggers compensating rollback actions upon failures.</p>
+
+                    <div class="blueprint-diagram">
+            [Saga Orchestrator FSM]
+       ┌───────────┼───────────┐
+       ▼           ▼           ▼
+[Order Service] [Payment Service] [Inventory Service]
+       │           │           │
+(Success)       (FAIL!)     (Compensate!)
+       │           │           │
+       └───────────┼───────────┘
+                   ▼
+    [Trigger Compensation Rollback]
+      ├── 1. Release Reserved Inventory
+      ├── 2. Cancel Order State in DB
+      └── 3. Transmit User Notification (Order Failed)
+                    </div>
+                `
+            },
+            {
+                tag: "API TOPOLOGY & GATEWAYS",
+                domain: "Backend-For-Frontend Pattern",
+                title: "API Gateway & Backend-For-Frontend (BFF) Federation",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Solves over-fetching and disparate client needs by deploying dedicated BFF aggregators for iOS/Android, Desktop Web, and Public Developer APIs behind a unified gateway.</p>
+                `
+            },
+            {
+                tag: "CACHING & HIGH THROUGHPUT",
+                domain: "Two-Tier Distributed Cache",
+                title: "Two-Tier Distributed Caching (L1 Memory + L2 Redis)",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Achieves sub-millisecond latency by serving 92% of cache hits directly from process RAM, with Redis Cluster acting as the shared secondary cache with pub/sub invalidation broadcasts.</p>
+                `
+            },
+            {
+                tag: "DOMAIN-DRIVEN DESIGN",
+                domain: "Strategic Enterprise Modeling",
+                title: "Domain-Driven Design (DDD) & Strategic Bounded Contexts",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Aligns microservice boundaries with real-world business domains. Uses explicit Anti-Corruption Layers to isolate legacy core systems from new event-driven microservices.</p>
+                `
+            },
+            {
+                tag: "FAULT TOLERANCE & RESILIENCE",
+                domain: "Microservice Resilience Mesh",
+                title: "Fault-Tolerant Microservices: Circuit Breakers & Bulkheads",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Eliminates cascading outages across deep microservice call graphs using Envoy outlier detection, concurrency bulkheads, and fallback degraded responses.</p>
+                `
+            }
+        ];
+
+        function filterArchitectures() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.arch-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.arch-card-title').textContent.toLowerCase();
+                const desc = card.querySelector('.arch-card-desc').textContent.toLowerCase();
+                const tag = card.querySelector('.arch-card-tag').textContent.toLowerCase();
+                
+                if (title.includes(query) || desc.includes(query) || tag.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterByTag(tag, btn) {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.arch-card');
+            cards.forEach(card => {
+                const cardTags = card.getAttribute('data-tags') || '';
+                if (tag === 'all' || cardTags.includes(tag)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openBlueprintModal(idx) {
+            const item = blueprints[idx];
+            if (!item) return;
+
+            document.getElementById('modal-badge').textContent = item.tag;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-domain').textContent = item.domain;
+            document.getElementById('modal-body').innerHTML = item.html;
+
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlueprintModal() {
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('blueprint-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('blueprint-modal')) {
+                closeBlueprintModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBlueprintModal();
+        });
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.nav-links');
+            if (nav) {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'rgba(6, 4, 10, 0.95)';
+                nav.style.padding = '1.5rem';
+                nav.style.borderBottom = '1px solid var(--border-color)';
+            }
+        }
+    </script>
+</body>
+</html>

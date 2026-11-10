@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Blueprints &amp; Zero-Trust Architecture | Dharsan Ramesh</title>
+    <meta name="description" content="Curated Atlas of Zero-Trust Security, Multi-Cloud Perimeters, SPIFFE/SVID Workload Identity, TMaaS, and DevSecOps Pipelines by Dharsan Ramesh.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shared Stylesheet -->
+    <link rel="stylesheet" href="css/shared.css">
+</head>
+<body>
+    <div class="grid-background"></div>
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                DHARSAN RAMESH
+                <span class="logo-shield">Secured Software System Designs</span>
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="ai-systems.html" class="nav-link">AI System Designs</a>
+                <a href="software-architecture.html" class="nav-link">Software Architecture</a>
+                <a href="security-blueprints.html" class="nav-link active-page">Security Blueprints</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="nav-cta">
+                <a href="index.html#contact" class="btn btn-primary">
+                    <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                    Consult Architect
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg style="width:24px;height:24px;fill:currentColor" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="container" style="padding-top: 5rem; min-height: 85vh;">
+        
+        <!-- Hero Header -->
+        <header class="atlas-hero">
+            <div class="atlas-badge">
+                <span>✦</span>
+                <span>ZERO-TRUST, CLOUD &amp; DEFENSE ARCHITECTURE ATLAS</span>
+            </div>
+            <h1 class="atlas-title">Security &amp; Zero-Trust Blueprints</h1>
+            <p class="atlas-desc">
+                Production-proven defense architectures: Cross-Cloud Zero-Trust Ingress, SPIFFE/SVID Workload Identity, Multi-Cloud SIEM/EDR Ingestion, Threat Modeling as a Service (TMaaS), and Cryptographic Supply Chain Gating.
+            </p>
+        </header>
+
+        <!-- Search & Filter Controls -->
+        <section class="atlas-search-strip">
+            <div class="search-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="search-input" class="atlas-search-input" placeholder="Search security blueprints (e.g. SPIFFE, Zero Trust, KMS, DevSecOps, SIEM, ATLAS)..." oninput="filterArchitectures()">
+            </div>
+            <div class="filter-chips-row">
+                <button class="filter-chip active" onclick="filterByTag('all', this)">All Blueprints (6)</button>
+                <button class="filter-chip" onclick="filterByTag('zero-trust', this)">Zero-Trust &amp; IAM</button>
+                <button class="filter-chip" onclick="filterByTag('cloud', this)">Cloud &amp; Edge Security</button>
+                <button class="filter-chip" onclick="filterByTag('devsecops', this)">DevSecOps &amp; Supply Chain</button>
+                <button class="filter-chip" onclick="filterByTag('threat', this)">Threat Modeling &amp; SOC</button>
+            </div>
+        </section>
+
+        <!-- Blueprints Grid -->
+        <div class="arch-grid" id="blueprints-container">
+            
+            <!-- Card 1 -->
+            <article class="arch-card" data-tags="zero-trust cloud edge">
+                <div>
+                    <div class="arch-card-tag">CLOUD &amp; EDGE SECURITY</div>
+                    <h2 class="arch-card-title">Cross-Cloud Zero-Trust Edge AI Gateway</h2>
+                    <p class="arch-card-desc">
+                        Stateless GCP Cloud Run edge ingress with Cloud Armor rate limiting, Cloud KMS Branca envelope encryption, and Google Cloud Workload Identity Federation bridging external AWS services.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Envelope Encryption (AES-GCM)</span>
+                        <span class="invariant-pill">Cloud Armor IP Shield</span>
+                        <span class="invariant-pill">Workload Identity Federation</span>
+                        <span class="invariant-pill">Sub-15ms Overhead</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(0)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="arch-card" data-tags="zero-trust iam identity">
+                <div>
+                    <div class="arch-card-tag">WORKLOAD IDENTITY &amp; IAM</div>
+                    <h2 class="arch-card-title">SPIFFE/SVID Workload Identity &amp; Ephemeral mTLS</h2>
+                    <p class="arch-card-desc">
+                        Universal machine identity plane eliminating hardcoded secrets in Kubernetes and hybrid clouds. SPIRE issues cryptographically verifiable short-lived X.509 SVIDs with mTLS tunnel enforcement.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Zero Static Credentials</span>
+                        <span class="invariant-pill">Automated SVID Rotation (&lt;1hr)</span>
+                        <span class="invariant-pill">Mutual TLS (mTLS) Mesh</span>
+                        <span class="invariant-pill">Kernel Cgroups Attestation</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(1)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="arch-card" data-tags="threat soc siem">
+                <div>
+                    <div class="arch-card-tag">THREAT OPERATIONS &amp; SOC</div>
+                    <h2 class="arch-card-title">Multi-Cloud SIEM &amp; Real-Time EDR Threat Pipeline</h2>
+                    <p class="arch-card-desc">
+                        Unified security telemetry pipeline ingesting billions of events/day across Azure Sentinel, AWS GuardDuty/CloudTrail, and SentinelOne EDR with automated SOAR containment playbooks.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Event Ingestion: 25k EPS</span>
+                        <span class="invariant-pill">Sub-60s Alert Triage</span>
+                        <span class="invariant-pill">Automated Quarantine SOAR</span>
+                        <span class="invariant-pill">Normalized OCSF Schema</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(2)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="arch-card" data-tags="devsecops supply-chain ci-cd">
+                <div>
+                    <div class="arch-card-tag">DEVSECOPS &amp; SUPPLY CHAIN</div>
+                    <h2 class="arch-card-title">Automated DevSecOps CI/CD Gating &amp; Image Attestation</h2>
+                    <p class="arch-card-desc">
+                        Enforces cryptographic policy gates in GitHub Actions and Jenkins. Combines SAST/DAST/SCA vulnerability scans with Sigstore Cosign container signing and in-toto SLSA Level 3 provenance.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">Sigstore Cosign Signature</span>
+                        <span class="invariant-pill">Zero Critical CVE Deploy</span>
+                        <span class="invariant-pill">SLSA Level 3 Provenance</span>
+                        <span class="invariant-pill">Kyverno Admission Control</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(3)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="arch-card" data-tags="threat modeling tmaas">
+                <div>
+                    <div class="arch-card-tag">THREAT MODELING AS A SERVICE</div>
+                    <h2 class="arch-card-title">AI Threat-Model Visualizer &amp; TMaaS Architecture</h2>
+                    <p class="arch-card-desc">
+                        Automated Threat Modeling as a Service parsing microservice and AI agent descriptors, mapping trust boundaries against OWASP Top 10 for LLMs, MITRE ATT&amp;CK, and MITRE ATLAS matrices.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">OWASP LLM &amp; ATLAS Mapped</span>
+                        <span class="invariant-pill">Automated STRIDE Engine</span>
+                        <span class="invariant-pill">Trust Boundary Graph</span>
+                        <span class="invariant-pill">Continuous Posture Drift</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(4)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="arch-card" data-tags="cloud kms encryption zero-trust">
+                <div>
+                    <div class="arch-card-tag">CRYPTOGRAPHIC INFRASTRUCTURE</div>
+                    <h2 class="arch-card-title">Hardware Security Module (HSM) &amp; Distributed KMS</h2>
+                    <p class="arch-card-desc">
+                        Enterprise key orchestration architecture utilizing FIPS 140-2 Level 3 Hardware Security Modules (AWS KMS / Cloud KMS). Enforces strict multi-region envelope encryption and automated key rotation.
+                    </p>
+                    <div class="arch-invariants">
+                        <span class="invariant-pill">FIPS 140-2 Level 3 HSM</span>
+                        <span class="invariant-pill">Envelope Encryption (DEK/KEK)</span>
+                        <span class="invariant-pill">Dual-Custodian Separation</span>
+                        <span class="invariant-pill">Immutable Audit Logging</span>
+                    </div>
+                </div>
+                <div>
+                    <button class="arch-action-btn" onclick="openBlueprintModal(5)">
+                        Inspect Architecture Blueprint <span>→</span>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Blueprint Deep Dive Modal -->
+    <div id="blueprint-modal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <div>
+                    <span id="modal-badge" class="logo-shield" style="margin-bottom:0.5rem; display:inline-block;"></span>
+                    <h2 id="modal-title" style="font-size:1.6rem; margin-top:0.25rem;"></h2>
+                    <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">
+                        ARCHITECT: <span style="color:var(--text-primary);">Dharsan Ramesh (Senior Staff Architect)</span> | FOCUS: <span id="modal-domain" style="color:var(--cyan);"></span>
+                    </div>
+                </div>
+                <button class="modal-close" onclick="closeBlueprintModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body" style="font-size:0.95rem; line-height:1.7;">
+                <!-- Injected Dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h3>Dharsan Ramesh</h3>
+                <p>Senior Staff Security Architect // Secured Software System Designs</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="ai-systems.html">AI Systems</a>
+                <a href="software-architecture.html">Software Architecture</a>
+                <a href="security-blueprints.html">Security Blueprints</a>
+                <a href="Dharsan_Ramesh_Resume.pdf" target="_blank">Resume</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Dharsan Ramesh. All rights reserved. Architected with high resilience and defense-in-depth principles.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        const blueprints = [
+            {
+                tag: "CLOUD & EDGE SECURITY",
+                domain: "Cross-Cloud Zero Trust Ingress",
+                title: "Cross-Cloud Zero-Trust Edge AI Gateway",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Provides a hardened, stateless entry point for distributed enterprise AI workloads spanning AWS, Azure, and Google Cloud. Incorporates Cloud Armor rate-limiting, Cloud KMS Branca envelope encryption, and IAM Workload Identity Federation.</p>
+
+                    <div class="blueprint-diagram">
+[Client Consumer] ──► [Cloudflare / Google Cloud Armor Edge (WAF + DDoS)]
+                            │ (Mutual TLS with Client Cert)
+                            ▼
+[GCP Cloud Run Stateless Edge Gateway]
+  ├── Workload Identity Attestation
+  ├── Envelope Decryption via Google Cloud KMS (HSM Backed)
+  ├── Policy Enforcement: Open Policy Agent (OPA) / Gatekeeper
+  └── Forward Proxy to Upstream Model Providers via Dedicated VPC Interconnect
+                            │
+                            ▼
+[Upstream LLM Clusters (AWS Bedrock / Azure OpenAI / GCP Vertex AI)]
+                    </div>
+                `
+            },
+            {
+                tag: "WORKLOAD IDENTITY & IAM",
+                domain: "SPIFFE/SVID Machine Identity",
+                title: "SPIFFE/SVID Workload Identity & Ephemeral mTLS",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Replaces brittle API keys and static secrets with verifiable workload identity. The SPIRE agent attests container attributes (cgroups, namespaces, image hashes) and mints 1-hour X.509 SVID certificates for service-to-service mTLS.</p>
+
+                    <div class="blueprint-diagram">
+[Kubernetes Node]
+  ├── [SPIRE Agent DaemonSet] (Attests container runtime &amp; cgroups)
+  │         │
+  │         ▼
+  │   [SPIRE Server] (Issues Cryptographic X.509 SVID)
+  │         │
+  ▼         ▼
+[Microservice Pod A] ══════ (mTLS with Mutual SVID Verification) ══════► [Microservice Pod B]
+                    </div>
+                `
+            },
+            {
+                tag: "THREAT OPERATIONS & SOC",
+                domain: "Multi-Cloud Threat Analytics",
+                title: "Multi-Cloud SIEM & Real-Time EDR Threat Pipeline",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>High-volume security analytics engine processing over 25,000 events per second. Normalizes multi-cloud logs (AWS CloudTrail, Azure Activity, SentinelOne EDR) into OCSF format and triggers automated SOAR containment playbooks.</p>
+                `
+            },
+            {
+                tag: "DEVSECOPS & SUPPLY CHAIN",
+                domain: "Software Supply Chain Attestation",
+                title: "Automated DevSecOps CI/CD Gating & Image Attestation",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>End-to-end supply chain defense pipeline embedding automated SAST/DAST/SCA security gates into CI/CD. Employs Sigstore Cosign to sign container images with in-toto SLSA Level 3 provenance, verified by Kyverno in Kubernetes.</p>
+                `
+            },
+            {
+                tag: "THREAT MODELING AS A SERVICE",
+                domain: "Automated Threat Modeling Engine",
+                title: "AI Threat-Model Visualizer & TMaaS Architecture",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Transforms threat modeling from a manual bottleneck into an automated, continuous service. Analyzes system architecture diagrams and code repos, generating trust boundary risk maps aligned with STRIDE and MITRE ATLAS.</p>
+                `
+            },
+            {
+                tag: "CRYPTOGRAPHIC INFRASTRUCTURE",
+                domain: "Hardware Security Modules & KMS",
+                title: "Hardware Security Module (HSM) & Distributed KMS",
+                html: `
+                    <h3>System Architecture Overview</h3>
+                    <p>Centralized cryptographic key management architecture leveraging FIPS 140-2 Level 3 HSMs. Features multi-region envelope encryption (DEK/KEK hierarchy), automated yearly key rotation, and strict dual-custodian access controls.</p>
+                `
+            }
+        ];
+
+        function filterArchitectures() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.arch-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.arch-card-title').textContent.toLowerCase();
+                const desc = card.querySelector('.arch-card-desc').textContent.toLowerCase();
+                const tag = card.querySelector('.arch-card-tag').textContent.toLowerCase();
+                
+                if (title.includes(query) || desc.includes(query) || tag.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterByTag(tag, btn) {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.arch-card');
+            cards.forEach(card => {
+                const cardTags = card.getAttribute('data-tags') || '';
+                if (tag === 'all' || cardTags.includes(tag)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function openBlueprintModal(idx) {
+            const item = blueprints[idx];
+            if (!item) return;
+
+            document.getElementById('modal-badge').textContent = item.tag;
+            document.getElementById('modal-title').textContent = item.title;
+            document.getElementById('modal-domain').textContent = item.domain;
+            document.getElementById('modal-body').innerHTML = item.html;
+
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBlueprintModal() {
+            const modal = document.getElementById('blueprint-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('blueprint-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('blueprint-modal')) {
+                closeBlueprintModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBlueprintModal();
+        });
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.nav-links');
+            if (nav) {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                nav.style.flexDirection = 'column';
+                nav.style.position = 'absolute';
+                nav.style.top = '70px';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'rgba(6, 4, 10, 0.95)';
+                nav.style.padding = '1.5rem';
+                nav.style.borderBottom = '1px solid var(--border-color)';
+            }
+        }
+    </script>
+</body>
+</html>
