@@ -2607,12 +2607,13 @@
                         <div class="wizard-step-node" id="node-3">4</div>
                     </div>
 
-                    <form id="consultationForm" action="https://api.web3forms.com/submit" method="POST">
+                    <form id="consultationForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="event.preventDefault(); wizardNext();">
                         <input type="hidden" name="access_key" value="4a2fa8ad-ae25-4032-9325-3fd2f8095cc3">
                         <input type="hidden" name="from_name" value="Portfolio Consultation Portal">
                         <input type="hidden" name="subject" id="web3_subject" value="New Architecture Consultation Request">
                         <input type="hidden" name="focus_area" id="web3_focus" value="General Consultation">
                         <input type="hidden" name="timeline" id="web3_timeline" value="Flexible">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display:none !important;">
                         
                         <!-- Step 1: Info -->
                         <div class="wizard-form-step active" id="form-step-0">
@@ -2687,12 +2688,13 @@
                             </div>
                         </div>
 
-                        <!-- Success Screen (Simulated) -->
+                        <!-- Success Screen -->
                         <div class="wizard-form-step" id="form-step-success">
                             <div class="success-step">
-                                <div class="success-icon">✓</div>
-                                <h4 class="wizard-step-title">Consultation Requested!</h4>
-                                <p style="color:var(--text-secondary)">Thank you for your submission. Dharsan Ramesh will review your architectural details and get back to you shortly via email.</p>
+                                <div class="success-icon" id="successIcon">✓</div>
+                                <h4 class="wizard-step-title" id="successTitle">Consultation Requested!</h4>
+                                <p id="successDesc" style="color:var(--text-secondary)">Thank you for your submission. Dharsan Ramesh will review your architectural details and get back to you shortly via email.</p>
+                                <div id="fallbackMailLink" style="margin-top:1.25rem;"></div>
                                 <button type="button" class="btn btn-secondary" style="margin-top:2rem" onclick="resetWizard()">Request Another Consultation</button>
                             </div>
                         </div>
@@ -3423,12 +3425,20 @@ func (g *AtlasGuardrailPolicy) ValidateAgentCall(ctx context.Context, prompt str
             }
         }
 
+        function escapeHtml(str) {
+            return String(str || '').replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
         async function submitConsultation() {
             const btnNext = document.getElementById('btnNext');
+            const btnBack = document.getElementById('btnBack');
             if (btnNext) {
                 btnNext.disabled = true;
                 btnNext.textContent = 'Transmitting...';
             }
+            if (btnBack) btnBack.disabled = true;
 
             // Gather all form fields
             const name = document.getElementById('clientName') ? document.getElementById('clientName').value.trim() : '';
@@ -3438,16 +3448,8 @@ func (g *AtlasGuardrailPolicy) ValidateAgentCall(ctx context.Context, prompt str
             const timeline = document.getElementById('selectedTimeline') && document.getElementById('selectedTimeline').value ? document.getElementById('selectedTimeline').value : 'Flexible';
             const details = document.getElementById('projectDetails') ? document.getElementById('projectDetails').value.trim() : '';
 
-            const payload = {
-                access_key: "4a2fa8ad-ae25-4032-9325-3fd2f8095cc3",
-                subject: `Architecture Consultation Request: ${name} (${role})`,
-                from_name: name || "Portfolio Visitor",
-                name: name,
-                email: email,
-                role: role,
-                focus_area: focus,
-                timeline: timeline,
-                message: `
+            const subjectLine = `Architecture Consultation: ${name} (${role})`;
+            const formattedMessage = `
 Full Name: ${name}
 Email Address: ${email}
 Role / Organization: ${role}
@@ -3456,44 +3458,111 @@ Project Timeline: ${timeline}
 
 Project Details & Requirements:
 ${details}
-                `.trim()
-            };
+            `.trim();
+
+            const mailtoSubject = encodeURIComponent(subjectLine);
+            const mailtoBody = encodeURIComponent(formattedMessage);
+            const directMailtoHref = `mailto:darshan.ferrari@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+            let success = false;
+            let errorMessage = '';
 
             try {
+                const formData = new FormData(document.getElementById('consultationForm'));
+                formData.set('access_key', '4a2fa8ad-ae25-4032-9325-3fd2f8095cc3');
+                formData.set('subject', subjectLine);
+                formData.set('from_name', name || 'Portfolio Visitor');
+                formData.set('name', name);
+                formData.set('email', email);
+                formData.set('role', role);
+                formData.set('focus_area', focus);
+                formData.set('timeline', timeline);
+                formData.set('message', formattedMessage);
+
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify(payload)
+                    body: formData
                 });
+
                 const result = await response.json();
-                if (!result.success) {
-                    console.warn('Web3Forms response:', result);
+                if (response.ok && result.success) {
+                    success = true;
+                } else {
+                    errorMessage = (result && result.message) ? result.message : 'Provider service response error';
+                    console.warn('Web3Forms returned unsuccessful status:', result);
                 }
             } catch (err) {
-                console.error('Submission error:', err);
-            } finally {
-                // Hide control buttons
-                document.getElementById('wizard-controls').style.display = 'none';
-                
-                // Show Success panel
-                const panels = document.querySelectorAll('.wizard-form-step');
-                panels.forEach(p => p.classList.remove('active'));
-                document.getElementById('form-step-success').classList.add('active');
-                
+                console.error('Fetch submission error:', err);
+                errorMessage = err.message || 'Browser network or adblocker restriction';
+            }
+
+            // Hide control buttons
+            document.getElementById('wizard-controls').style.display = 'none';
+
+            // Show Success / Status panel
+            const panels = document.querySelectorAll('.wizard-form-step');
+            panels.forEach(p => p.classList.remove('active'));
+            document.getElementById('form-step-success').classList.add('active');
+
+            const successIcon = document.getElementById('successIcon');
+            const successTitle = document.getElementById('successTitle');
+            const successDesc = document.getElementById('successDesc');
+            const fallbackContainer = document.getElementById('fallbackMailLink');
+
+            if (success) {
                 // Mark all nodes completed
-                for(let i = 0; i < totalSteps; i++) {
+                for (let i = 0; i < totalSteps; i++) {
                     const node = document.getElementById(`node-${i}`);
                     if (node) node.className = 'wizard-step-node completed';
                 }
                 const pBar = document.getElementById('wizard-progress-bar');
                 if (pBar) pBar.style.width = '100%';
 
-                if (btnNext) {
-                    btnNext.disabled = false;
-                    btnNext.textContent = 'Submit';
+                if (successIcon) {
+                    successIcon.textContent = '✓';
+                    successIcon.style.color = '#10b981';
+                    successIcon.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                }
+                if (successTitle) successTitle.textContent = 'Consultation Requested!';
+                if (successDesc) {
+                    successDesc.innerHTML = `
+                        Thank you, <strong>${escapeHtml(name)}</strong>. Your architectural consultation request has been dispatched directly to Dharsan Ramesh.<br><br>
+                        <div style="font-size:0.875rem;padding:0.75rem 1rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:8px;color:#d1fae5;line-height:1.5;">
+                            <strong>Delivery Target:</strong> <code>darshan.ferrari@gmail.com</code>.<br>
+                            <span style="color:#a7f3d0;">Notice: If testing this for the first time, check your Gmail <strong>Spam</strong> or <strong>Promotions</strong> folder for the Web3Forms notification and mark it as 'Not Spam'.</span>
+                        </div>
+                    `;
+                }
+                if (fallbackContainer) {
+                    fallbackContainer.innerHTML = `
+                        <a href="${directMailtoHref}" class="btn btn-secondary" style="font-size:0.85rem;padding:0.5rem 1.25rem;border-color:rgba(255,255,255,0.15);">
+                            Direct Email Backup (Send from Mail App) ✉️
+                        </a>
+                    `;
+                }
+            } else {
+                // Show Error with instant 1-click mailto fallback
+                if (successIcon) {
+                    successIcon.textContent = '!';
+                    successIcon.style.color = '#f59e0b';
+                    successIcon.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+                }
+                if (successTitle) successTitle.textContent = 'One Last Step to Deliver!';
+                if (successDesc) {
+                    successDesc.innerHTML = `
+                        The automated background request encountered an adblocker or network boundary (${escapeHtml(errorMessage)}).<br><br>
+                        <strong>Don't worry — your consultation details have been safely formatted!</strong> Click below to transmit directly via your mail client:
+                    `;
+                }
+                if (fallbackContainer) {
+                    fallbackContainer.innerHTML = `
+                        <a href="${directMailtoHref}" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;font-weight:600;padding:0.75rem 1.5rem;box-shadow:0 0 20px rgba(139,92,246,0.5);">
+                            Send via Email App ➔
+                        </a>
+                    `;
                 }
             }
         }
@@ -3510,6 +3579,28 @@ ${details}
             document.getElementById('selectedTimeline').value = '';
             
             // Restore controls
+            const btnNext = document.getElementById('btnNext');
+            const btnBack = document.getElementById('btnBack');
+            if (btnNext) {
+                btnNext.disabled = false;
+                btnNext.textContent = 'Next';
+            }
+            if (btnBack) btnBack.disabled = true;
+
+            const fallbackContainer = document.getElementById('fallbackMailLink');
+            if (fallbackContainer) fallbackContainer.innerHTML = '';
+
+            const successIcon = document.getElementById('successIcon');
+            if (successIcon) {
+                successIcon.textContent = '✓';
+                successIcon.style.color = '';
+                successIcon.style.borderColor = '';
+            }
+            const successTitle = document.getElementById('successTitle');
+            if (successTitle) successTitle.textContent = 'Consultation Requested!';
+            const successDesc = document.getElementById('successDesc');
+            if (successDesc) successDesc.textContent = 'Thank you for your submission. Dharsan Ramesh will review your architectural details and get back to you shortly via email.';
+
             document.getElementById('wizard-controls').style.display = 'flex';
             
             updateWizardUI();
