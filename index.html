@@ -2607,22 +2607,27 @@
                         <div class="wizard-step-node" id="node-3">4</div>
                     </div>
 
-                    <form id="consultationForm">
+                    <form id="consultationForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="4a2fa8ad-ae25-4032-9325-3fd2f8095cc3">
+                        <input type="hidden" name="from_name" value="Portfolio Consultation Portal">
+                        <input type="hidden" name="subject" id="web3_subject" value="New Architecture Consultation Request">
+                        <input type="hidden" name="focus_area" id="web3_focus" value="General Consultation">
+                        <input type="hidden" name="timeline" id="web3_timeline" value="Flexible">
                         
                         <!-- Step 1: Info -->
                         <div class="wizard-form-step active" id="form-step-0">
                             <h4 class="wizard-step-title">Tell me about yourself</h4>
                             <div class="form-group">
                                 <label for="clientName">Full Name</label>
-                                <input type="text" id="clientName" class="form-control" placeholder="John Doe" required>
+                                <input type="text" id="clientName" name="name" class="form-control" placeholder="John Doe" required>
                             </div>
                             <div class="form-group">
                                 <label for="clientEmail">Email Address</label>
-                                <input type="email" id="clientEmail" class="form-control" placeholder="john@organization.com" required>
+                                <input type="email" id="clientEmail" name="email" class="form-control" placeholder="john@organization.com" required>
                             </div>
                             <div class="form-group">
                                 <label for="clientRole">Your Role</label>
-                                <input type="text" id="clientRole" class="form-control" placeholder="VP of Engineering / Security Lead" required>
+                                <input type="text" id="clientRole" name="role" class="form-control" placeholder="VP of Engineering / Security Lead" required>
                             </div>
                         </div>
 
@@ -2678,7 +2683,7 @@
                             <h4 class="wizard-step-title">Describe your project requirements</h4>
                             <div class="form-group">
                                 <label for="projectDetails">Details</label>
-                                <textarea id="projectDetails" class="form-control" rows="5" placeholder="Provide details about your tech stack, system requirements, or compliance targets..." required></textarea>
+                                <textarea id="projectDetails" name="message" class="form-control" rows="5" placeholder="Provide details about your tech stack, system requirements, or compliance targets..." required></textarea>
                             </div>
                         </div>
 
@@ -3418,20 +3423,79 @@ func (g *AtlasGuardrailPolicy) ValidateAgentCall(ctx context.Context, prompt str
             }
         }
 
-        function submitConsultation() {
-            // Hide control buttons
-            document.getElementById('wizard-controls').style.display = 'none';
-            
-            // Show Success panel
-            const panels = document.querySelectorAll('.wizard-form-step');
-            panels.forEach(p => p.classList.remove('active'));
-            document.getElementById('form-step-success').classList.add('active');
-            
-            // Mark all nodes completed
-            for(let i = 0; i < totalSteps; i++) {
-                document.getElementById(`node-${i}`).className = 'wizard-step-node completed';
+        async function submitConsultation() {
+            const btnNext = document.getElementById('btnNext');
+            if (btnNext) {
+                btnNext.disabled = true;
+                btnNext.textContent = 'Transmitting...';
             }
-            document.getElementById('wizard-progress-bar').style.width = '100%';
+
+            // Gather all form fields
+            const name = document.getElementById('clientName') ? document.getElementById('clientName').value.trim() : '';
+            const email = document.getElementById('clientEmail') ? document.getElementById('clientEmail').value.trim() : '';
+            const role = document.getElementById('clientRole') ? document.getElementById('clientRole').value.trim() : '';
+            const focus = document.getElementById('selectedFocus') && document.getElementById('selectedFocus').value ? document.getElementById('selectedFocus').value : 'General Consultation';
+            const timeline = document.getElementById('selectedTimeline') && document.getElementById('selectedTimeline').value ? document.getElementById('selectedTimeline').value : 'Flexible';
+            const details = document.getElementById('projectDetails') ? document.getElementById('projectDetails').value.trim() : '';
+
+            const payload = {
+                access_key: "4a2fa8ad-ae25-4032-9325-3fd2f8095cc3",
+                subject: `Architecture Consultation Request: ${name} (${role})`,
+                from_name: name || "Portfolio Visitor",
+                name: name,
+                email: email,
+                role: role,
+                focus_area: focus,
+                timeline: timeline,
+                message: `
+Full Name: ${name}
+Email Address: ${email}
+Role / Organization: ${role}
+Core Focus: ${focus}
+Project Timeline: ${timeline}
+
+Project Details & Requirements:
+${details}
+                `.trim()
+            };
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                if (!result.success) {
+                    console.warn('Web3Forms response:', result);
+                }
+            } catch (err) {
+                console.error('Submission error:', err);
+            } finally {
+                // Hide control buttons
+                document.getElementById('wizard-controls').style.display = 'none';
+                
+                // Show Success panel
+                const panels = document.querySelectorAll('.wizard-form-step');
+                panels.forEach(p => p.classList.remove('active'));
+                document.getElementById('form-step-success').classList.add('active');
+                
+                // Mark all nodes completed
+                for(let i = 0; i < totalSteps; i++) {
+                    const node = document.getElementById(`node-${i}`);
+                    if (node) node.className = 'wizard-step-node completed';
+                }
+                const pBar = document.getElementById('wizard-progress-bar');
+                if (pBar) pBar.style.width = '100%';
+
+                if (btnNext) {
+                    btnNext.disabled = false;
+                    btnNext.textContent = 'Submit';
+                }
+            }
         }
 
         function resetWizard() {
